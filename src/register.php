@@ -15,13 +15,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer le nom d'utilisateur et le mot de passe du formulaire
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $email = $_POST["email"];
 
     // Hacher le mot de passe
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la base de données
-    $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-    $stmt->bind_param("ss", $username, $hashed_password);
+    $stmt = $conn->prepare("INSERT INTO users (username, password,email) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $hashed_password, $email);
     if ($stmt->execute()) {
         echo "Utilisateur enregistré avec succès !";
     } else {
@@ -54,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1 class="opacity">LOGIN</h1>
                 <form action="register.php" method="POST">
                     <input type="text"  name="username" placeholder="USERNAME" />
+                    <input type="email"  name="email" placeholder="EMAIL" />
                     <input type="password" name="password" placeholder="PASSWORD" />
                     <button class="opacity" type="submit">Enregistrer</button>
                 </form>
