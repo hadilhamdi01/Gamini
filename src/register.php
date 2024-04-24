@@ -16,17 +16,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $email = $_POST["email"];
+    $ville = $_POST["ville"];
+
 
     // Hacher le mot de passe
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la base de données
-    $stmt = $conn->prepare("INSERT INTO users (username, password,email) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $hashed_password, $email);
+    $stmt = $conn->prepare("INSERT INTO users (username, password,email, ville) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("ssss", $username, $hashed_password, $email, $ville);
+
+    // Exécuter la requête SQL
     if ($stmt->execute()) {
-        echo "Utilisateur enregistré avec succès !";
+        // Succès d'enregistrement
+        echo '<script>alert("Utilisateur enregistré avec succès !");</script>';
     } else {
-        echo "Erreur lors de l'enregistrement de l'utilisateur : " . $conn->error;
+        // Échec d'enregistrement
+        echo '<script>alert("Erreur lors de l\'enregistrement de l\'utilisateur : ' . $conn->error . '");</script>';
     }
 
     // Fermer la déclaration et la connexion à la base de données
@@ -41,11 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
-   
 </head>
-
-
 <body>
     <section class="container">
         <div class="login-container">
@@ -56,10 +58,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="register.php" method="POST">
                     <input type="text"  name="username" placeholder="USERNAME" />
                     <input type="email"  name="email" placeholder="EMAIL" />
+                    <input type="text"  name="ville" placeholder="VILLE" />
+
                     <input type="password" name="password" placeholder="PASSWORD" />
                     <button class="opacity" type="submit">SIGN UP</button>
                 </form>
-              
             </div>
             <div class="circle circle-two"></div>
         </div>

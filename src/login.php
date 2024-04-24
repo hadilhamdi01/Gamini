@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </form>
                 <div class="register-forget opacity">
                     <a href="register.php">REGISTER</a>
-                    <a href="">FORGOT PASSWORD</a>
+                    <a href="reset_password_form.php">FORGOT PASSWORD</a>
                 </div>
             </div>
             <div class="circle circle-two"></div>

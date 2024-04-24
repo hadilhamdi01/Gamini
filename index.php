@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Videograph Template">
+    <meta name="keywords" content="Videograph, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Videograph | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/loggo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav__option">
+                        <nav class="header__nav__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Accueil</a></li>
+                                <li><a href="./about.html">À propos</a></li>
+                                <li><a href="./portfolio.html">Jeux</a></li>
+                                <li><a href="./services.html">Services</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./about.html">À propos</a></li>
+                                        <li><a href="./portfolio.html">Jeux</a></li>
+                                        <li><a href="./blog.html">Blog</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./contact.html">Contact</a></li> 
+
+                            </ul>
+                            
+                        </nav>
+                        <div class="header__nav__social">
+                            <a href="src/login.php" class="button-85" role="button">Se connecter</a>
+                            <a href="lien_vers_votre_autre_page.html" class="button-16" role="button">S'inscrire</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-01.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <h2>Gamini</h2>
+                                <span>où l'amusement rencontre l'innovation</span>
+                                <a href="#" class="primary-btn">Jouer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-2.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <h2>Gamini</h2>
+                                <span>votre destination pour des jeux passionnants.</span>
+                                <a href="#" class="primary-btn">Jouer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="img/hero/hero-3.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <h2>Gamini</h2>
+                                <span>votre portail vers le divertissement ultime.</span>
+                                <a href="#" class="primary-btn">Jouer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Services Section Begin -->
+    <section class="services spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="services__title">
+                        <div class="section-title">
+                            <span>À propos</span>
+                            <h2>Gamini</h2>
+                        </div>
+                        <p>Bienvenue sur Gamini, votre destination pour le jeu ultime !
+                            Notre équipe passionnée vous propose une sélection variée de jeux captivants,
+                            allant des classiques intemporels aux dernières nouveautés.
+                            Rejoignez notre communauté et plongez dans une expérience de jeu immersive et divertissante.
+                            Gamini - où le plaisir est garanti !</p>
+                        <a href="#" class="primary-btn">View all services</a>    
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <img src="img/apro.avif" style="float:left; margin-left: 105px; width:90%;margin-top: -50px ">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section End -->
+
+    <!-- Work Section Begin -->
+    <section class="work">
+        <div class="work__gallery">
+            <div class="grid-sizer"></div>
+            <div class="work__item wide__item set-bg" data-setbg="img/fruit.avif">
+                <a href="" class="play-btn video-popup"><i
+                        class="fa fa-play"></i></a>
+                <div class="work__item__hover">
+                    <h4>Fruits à Gogo</h4>
+                    
+                </div>
+            </div>
+            <div class="work__item wide__item set-bg" data-setbg="img/snake.png">
+                <a href="" class="play-btn video-popup"><i
+                        class="fa fa-play"></i></a>
+                <div class="work__item__hover">
+                    <h4>Serpent</h4>
+                    
+                </div>
+            </div>
+            <div class="work__item wide__item set-bg" data-setbg="img/xo.jpg">
+                <a href="" class="play-btn video-popup"><i
+                        class="fa fa-play"></i></a>
+                <div class="work__item__hover">
+                    <h4>Tic Tac Toc </h4>
+                    
+                </div>
+            </div>
+            <div class="work__item wide__item set-bg" data-setbg="img/oix.jpg">
+                <a href="" class="play-btn video-popup"><i
+                        class="fa fa-play"></i></a>
+                <div class="work__item__hover">
+                    <h4>Rio vol</h4>
+                    
+                </div>
+            </div>
+            <div class="work__item wide__item set-bg" data-setbg="img/ninja.jpg">
+                <a href="" class="play-btn video-popup"><i
+                        class="fa fa-play"></i></a>
+                <div class="work__item__hover">
+                    <h4>Héros à la Baguette</h4>
+                    
+                </div>
+            </div>
+            <div class="work__item wide__item set-bg" data-setbg="img/memor.png">
+                <a href="" class="play-btn video-popup"><i
+                        class="fa fa-play"></i></a>
+                <div class="work__item__hover">
+                    <h4>Memoiria</h4>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- Work Section End -->
+
+    <!-- Counter Section Begin -->
+    <section class="counter">
+        <div class="container">
+            <div class="counter__content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-1.png" alt="">
+                                <h2 class="counter_num">230</h2>
+                                <p>Compled Projects</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item second__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-2.png" alt="">
+                                <h2 class="counter_num">1068</h2>
+                                <p>Happy clients</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item third__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-3.png" alt="">
+                                <h2 class="counter_num">230</h2>
+                                <p>Perspective clients</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="counter__item four__item">
+                            <div class="counter__item__text">
+                                <img src="img/icons/ci-4.png" alt="">
+                                <h2 class="counter_num">230</h2>
+                                <p>Compled Projects</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Counter Section End -->
+
+    <!-- Team Section Begin -->
+    <section class="team spad set-bg" data-setbg="img/team-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title team__title">
+                        <span>Nice to meet</span>
+                        <h2>OUR Team</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item set-bg" data-setbg="img/team/team-1.jpg">
+                        <div class="team__item__text">
+                            <h4>AMANDA STONE</h4>
+                            <p>Videographer</p>
+                            <div class="team__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--second set-bg" data-setbg="img/team/team-2.jpg">
+                        <div class="team__item__text">
+                            <h4>AMANDA STONE</h4>
+                            <p>Videographer</p>
+                            <div class="team__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--third set-bg" data-setbg="img/team/team-3.jpg">
+                        <div class="team__item__text">
+                            <h4>AMANDA STONE</h4>
+                            <p>Videographer</p>
+                            <div class="team__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
+                    <div class="team__item team__item--four set-bg" data-setbg="img/team/team-4.jpg">
+                        <div class="team__item__text">
+                            <h4>AMANDA STONE</h4>
+                            <p>Videographer</p>
+                            <div class="team__item__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-dribbble"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 p-0">
+                    <div class="team__btn">
+                        <a href="#" class="primary-btn">Meet Our Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+
+    <!-- Latest Blog Section Begin -->
+    <section class="latest spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title center-title">
+                        <span>Our Blog</span>
+                        <h2>Blog Update</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="latest__slider owl-carousel">
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>What Makes Users Want to Share a Video on Social Media?</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>Bumper Ads: How to Tell a Story in 6 Seconds</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>What Makes Users Want to Share a Video on Social Media?</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>Bumper Ads: How to Tell a Story in 6 Seconds</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>What Makes Users Want to Share a Video on Social Media?</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>What Makes Users Want to Share a Video on Social Media?</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog__item latest__item">
+                            <h4>What Makes Users Want to Share a Video on Social Media?</h4>
+                            <ul>
+                                <li>Jan 03, 2020</li>
+                                <li>05 Comment</li>
+                            </ul>
+                            <p>We recently launched a new website for a Vital client and wanted to share some of the
+                                cool features we were able...</p>
+                            <a href="#">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Latest Blog Section End -->
+
+    <!-- Call To Action Section Begin -->
+    <section class="callto spad set-bg" data-setbg="img/callto-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="callto__text">
+                        <h2>Fresh Ideas, Fresh Moments Giving Wings to your Stories.</h2>
+                        <p>INC5000, Best places to work 2019</p>
+                        <a href="#">Start your stories</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call To Action Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__logo">
+                            <a href="#"><img src="img/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="footer__top__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__option">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="footer__option__item">
+                            <h5>About us</h5>
+                            <p>Formed in 2006 by Matt Hobbs and Cael Jones, Videoprah is an award-winning, full-service
+                                production company specializing.</p>
+                            <a href="#" class="read__more">Read more <span class="arrow_right"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Who we are</h5>
+                            <ul>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Carrers</a></li>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#">Locations</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-3">
+                        <div class="footer__option__item">
+                            <h5>Our work</h5>
+                            <ul>
+                                <li><a href="#">Feature</a></li>
+                                <li><a href="#">Latest</a></li>
+                                <li><a href="#">Browse Archive</a></li>
+                                <li><a href="#">Video for web</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="footer__option__item">
+                            <h5>Newsletter</h5>
+                            <p>Videoprah is an award-winning, full-service production company specializing.</p>
+                            <form action="#">
+                                <input type="text" placeholder="Email">
+                                <button type="submit"><i class="fa fa-send"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <p class="footer__copyright__text">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
