@@ -189,7 +189,7 @@
                     
                 </div>
             </div>
-            <div class="work__item wide__item set-bg" data-setbg="img/memor.png">
+            <div class="work__item wide__item set-bg" data-setbg="img/memoire.jpg">
                 <a href="" class="play-btn video-popup"><i
                         class="fa fa-play"></i></a>
                 <div class="work__item__hover">
@@ -210,8 +210,8 @@
                         <div class="counter__item">
                             <div class="counter__item__text">
                                 <img src="img/icons/ci-1.png" alt="">
-                                <h2 class="counter_num">230</h2>
-                                <p>Compled Projects</p>
+                                <h2 class="counter_num">6</h2>
+                                <p>jeux</p>
                             </div>
                         </div>
                     </div>
@@ -219,8 +219,8 @@
                         <div class="counter__item second__item">
                             <div class="counter__item__text">
                                 <img src="img/icons/ci-2.png" alt="">
-                                <h2 class="counter_num">1068</h2>
-                                <p>Happy clients</p>
+                                <h2 class="counter_num">168</h2>
+                                <p>heureux joueurs</p>
                             </div>
                         </div>
                     </div>
@@ -228,8 +228,8 @@
                         <div class="counter__item third__item">
                             <div class="counter__item__text">
                                 <img src="img/icons/ci-3.png" alt="">
-                                <h2 class="counter_num">230</h2>
-                                <p>Perspective clients</p>
+                                <h2 class="counter_num">3</h2>
+                                <p>future jeux</p>
                             </div>
                         </div>
                     </div>
@@ -237,8 +237,8 @@
                         <div class="counter__item four__item">
                             <div class="counter__item__text">
                                 <img src="img/icons/ci-4.png" alt="">
-                                <h2 class="counter_num">230</h2>
-                                <p>Compled Projects</p>
+                                <h2 class="counter_num">8</h2>
+                                <p>pays</p>
                             </div>
                         </div>
                     </div>
@@ -249,22 +249,22 @@
     <!-- Counter Section End -->
 
     <!-- Team Section Begin -->
-    <section class="team spad set-bg" data-setbg="img/team-bg.jpg">
+    <section class="team spad set-bg" data-setbg="img/team/bg.gif">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title team__title">
-                        <span>Nice to meet</span>
-                        <h2>OUR Team</h2>
+                        
+                        <h2>Notre équipe</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                    <div class="team__item set-bg" data-setbg="img/team/team-1.jpg">
+                    <div class="team__item set-bg" data-setbg="img/team/eya.jpg">
                         <div class="team__item__text">
-                            <h4>AMANDA STONE</h4>
-                            <p>Videographer</p>
+                            <h4>Zaafouri Eya </h4>
+                            <p>Devlouppesse de front end</p>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -275,38 +275,10 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                    <div class="team__item team__item--second set-bg" data-setbg="img/team/team-2.jpg">
+                    <div class="team__item team__item--second set-bg" data-setbg="img/team/hadil.jpg">
                         <div class="team__item__text">
-                            <h4>AMANDA STONE</h4>
-                            <p>Videographer</p>
-                            <div class="team__item__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                    <div class="team__item team__item--third set-bg" data-setbg="img/team/team-3.jpg">
-                        <div class="team__item__text">
-                            <h4>AMANDA STONE</h4>
-                            <p>Videographer</p>
-                            <div class="team__item__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 p-0">
-                    <div class="team__item team__item--four set-bg" data-setbg="img/team/team-4.jpg">
-                        <div class="team__item__text">
-                            <h4>AMANDA STONE</h4>
-                            <p>Videographer</p>
+                            <h4>Hamdi hadil</h4>
+                            <p>Devlouppesse de back end </p>
                             <div class="team__item__social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -318,7 +290,7 @@
                 </div>
                 <div class="col-lg-12 p-0">
                     <div class="team__btn">
-                        <a href="#" class="primary-btn">Meet Our Team</a>
+                        <a href="#" class="primary-btn">Découvrir notre équipe</a>
                     </div>
                 </div>
             </div>
