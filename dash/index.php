@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -172,7 +172,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="..\src\logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -303,8 +303,8 @@ if ($result->num_rows > 0) {
                                     <td>" . $row["role"] . "</td>
                                     <td>" . $row["titre"] . "</td>
                                     <td>
-                                        <a class='btn btn-sm btn-primary' href='#'>Détail</a>
-                                        <a class='btn btn-sm btn-primary' href='#'>Détail</a>
+                                        <a class='btn btn-sm btn-primary'  href='modifier.php?id=" . $row["id"] . "'>Détail</a>
+                                        <a class='btn btn-sm btn-primary' href='supprimer_utilisateur.php?id=" . $row["id"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet utilisateur ?\")'>Supprimer</a>
                                     </td>
                                   </tr>";
                         }
