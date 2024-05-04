@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Rediriger en fonction du rôle de l'utilisateur
             if ($row["role"] == "admin") {
-                header("Location: dash.php");
+                header("Location: ../dash/index.php");
             } else {
                 header("Location: welcome.php");
             }

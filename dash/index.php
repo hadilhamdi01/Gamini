@@ -250,72 +250,73 @@
             <!-- Sales Chart End -->
 
 
-            <!-- Recent Sales Start -->
+            <!-- Users -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
+                        <h6 class="mb-0">Utilisateurs</h6>
+                        <a href="">Nouveau utilisateur</a>
                     </div>
                     <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
+                    <?php
+//  Connexion à la base de données
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "gamini"; 
+
+// Créer une connexion
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Vérifier la connexion
+if ($conn->connect_error) {
+    die("La connexion a échoué : " . $conn->connect_error);
+}
+
+//  Exécuter une requête SQL pour extraire les données
+$sql = "SELECT * FROM users"; 
+
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+
+                    echo'    <table class="table text-start align-middle table-bordered table-hover mb-0">';
+                         echo'   <thead>
                                 <tr class="text-white">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Nom</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Ville</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Titre</th>
                                     <th scope="col">Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
+                            </thead>';
+                           echo' <tbody>';
+                           while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
+                                    <td><input class='form-check-input' type='checkbox'></td>
+                                    <td>" . $row["id"] . "</td>
+                                    <td>" . $row["username"] . "</td>
+                                    <td>" . $row["email"] . "</td>
+                                    <td>" . $row["ville"] . "</td>
+                                    <td>" . $row["role"] . "</td>
+                                    <td>" . $row["titre"] . "</td>
+                                    <td>
+                                        <a class='btn btn-sm btn-primary' href='#'>Détail</a>
+                                        <a class='btn btn-sm btn-primary' href='#'>Détail</a>
+                                    </td>
+                                  </tr>";
+                        }
+                        echo '</tbody>';
+                        echo '</table>';
+                    } else {
+                        echo "0 résultats";
+                    }
+                    // Fermer la connexion à la base de données
+                    $conn->close();
+                    ?>
+                              
                             </tbody>
                         </table>
                     </div>
