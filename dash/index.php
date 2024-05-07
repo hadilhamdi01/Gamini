@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +25,15 @@
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -165,10 +170,10 @@
                         </div>
                     </div>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
-                        </a>
+                        <!-- Utilisez $nom_utilisateur et $image_utilisateur où vous en avez besoin dans votre HTML -->
+        <img src="<?php echo isset($image_utilisateur) ? $image_utilisateur : 'placeholder.jpg'; ?>" alt="Image utilisateur">
+        <h1><?php echo isset($nom_utilisateur) ? $nom_utilisateur : 'Utilisateur inconnu'; ?></h1>
+    
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
@@ -255,7 +260,7 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Utilisateurs</h6>
-                        <a href="">Nouveau utilisateur</a>
+                        <a href="add.php">Nouveau utilisateur</a>
                     </div>
                     <div class="table-responsive">
                     <?php
@@ -303,9 +308,13 @@ if ($result->num_rows > 0) {
                                     <td>" . $row["role"] . "</td>
                                     <td>" . $row["titre"] . "</td>
                                     <td>
-                                        <a class='btn btn-sm btn-primary'  href='modifier.php?id=" . $row["id"] . "'>Détail</a>
-                                        <a class='btn btn-sm btn-primary' href='supprimer_utilisateur.php?id=" . $row["id"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet utilisateur ?\")'>Supprimer</a>
-                                    </td>
+                                    <a class='btn btn-sm btn-primary' href='modifier.php?id=" . $row["id"] . "'>
+                                    <i class='fas fa-info-circle'></i> 
+                                </a>
+                                <a class='btn btn-sm btn-danger' href='supprimer_utilisateur.php?id=" . $row["id"] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet utilisateur ?\")'>
+                                <i class='fas fa-trash-alt'></i>
+                            </a>
+                                                                </td>
                                   </tr>";
                         }
                         echo '</tbody>';
@@ -383,8 +392,15 @@ if ($result->num_rows > 0) {
                                 <a href="">Show All</a>
                             </div>
                             <div id="calender"></div>
-                        </div>
-                    </div>
+                            
+                            <div class="bootstrap-datetimepicker-widget usetwentyfour">
+                <!-- Ajoutez votre structure de calendrier ici -->
+            </div>
+        </div>
+    </div>
+
+                   
+                  
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -471,7 +487,58 @@ if ($result->num_rows > 0) {
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Formulaire de date</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="dateInput" class="form-label">Date sélectionnée :</label>
+                        <input type="text" class="form-control" id="dateInput" readonly>
+                    </div>
+                    <!-- Ajoutez ici les champs de votre formulaire -->
+                    <button type="submit" class="btn btn-primary">Soumettre</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <!-- JavaScript Libraries -->
+    <script>
+   
+
+   document.addEventListener("DOMContentLoaded", function () {
+    // Sélectionnez tous les éléments <td> qui ont l'attribut data-action="selectDay"
+    var days = document.querySelectorAll("td[data-action='selectDay']");
+
+    // Parcours de tous les éléments <td> et ajout d'un écouteur d'événements clic
+    days.forEach(function (day) {
+        day.addEventListener("click", function () {
+            // Récupérez la date à partir de l'attribut data-day
+            var selectedDate = day.getAttribute("data-day");
+
+            // Ouvrir le modal lorsque vous cliquez sur un élément <td>
+            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+            myModal.show();
+            
+            // Mettre à jour le champ de date du formulaire avec la date sélectionnée
+            document.getElementById('dateInput').value = selectedDate;
+        });
+    });
+});
+
+</script>
+
+
+
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
