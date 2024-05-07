@@ -1,4 +1,49 @@
 
+<?php
+// Vérifier si le formulaire a été soumis
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupérer les données du formulaire
+    $nom = $_POST['nom'];
+    $description = $_POST['description'];
+    $prix = $_POST['prix'];
+    $date = $_POST['date'];
+    $formatted_date = date('Y-m-d', strtotime($date));
+    $titre = $_POST['titre'];
+    
+
+     // Hasher le mot de passe
+     $hashed_password = password_hash($mdp, PASSWORD_DEFAULT);
+
+    // Établir une connexion à la base de données
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "gamini";
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Vérifier la connexion
+    if ($conn->connect_error) {
+        die("La connexion a échoué : " . $conn->connect_error);
+    }
+
+    // Requête SQL pour insérer un nouvel utilisateur
+    $sql = "INSERT INTO events (date, nom,description,prix) VALUES ('$formatted_date', '$nom', '$description', '$prix')";
+
+    if ($conn->query($sql) === TRUE) {
+        // Rediriger vers une page de succès ou afficher un message de succès
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Erreur lors de l'ajout de la competition : " . $conn->error;
+    }
+
+    // Fermer la connexion à la base de données
+    $conn->close();
+}
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -388,8 +433,8 @@ if ($result->num_rows > 0) {
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">Calender</h6>
-                                <a href="">Show All</a>
+                                <h6 class="mb-0">Calendrier</h6>
+                               
                             </div>
                             <div id="calender"></div>
                             
@@ -401,61 +446,51 @@ if ($result->num_rows > 0) {
 
                    
                   
-                    <div class="col-sm-12 col-md-6 col-xl-4">
-                        <div class="h-100 bg-secondary rounded p-4">
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <h6 class="mb-0">To Do List</h6>
-                                <a href="">Show All</a>
+    <div class="col-sm-12 col-md-6 col-xl-4">
+    <div class="h-100 bg-secondary rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Compétitions</h6>
+            <a href="events.php">Voir tout</a> <!-- Remplacez "events.php" par le lien vers votre page qui affiche toutes les compétitions -->
+        </div>
+
+        <?php
+        // Établir une connexion à la base de données
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "gamini";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Vérifier la connexion
+        if ($conn->connect_error) {
+            die("La connexion a échoué : " . $conn->connect_error);
+        }
+
+        // Requête SQL pour sélectionner les données de la table "events"
+        $sql = "SELECT * FROM events";
+        $result = $conn->query($sql);
+
+        // Vérifier si des résultats ont été trouvés
+        if ($result->num_rows > 0) {
+            // Afficher les données dans un format de liste
+            echo "<ul class='list-group'>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<li class='list-group-item d-flex justify-content-between align-items-center'>" . $row["nom"] . "<span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>"; // Vous pouvez personnaliser l'affichage en fonction de vos besoins
+            }
+            echo "</ul>";
+        } else {
+            echo "Aucun résultat trouvé";
+        }
+
+        // Fermer la connexion à la base de données
+        $conn->close();
+        ?>
+    </div>
+</div>
+
+                                
                             </div>
-                            <div class="d-flex mb-2">
-                                <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
-                                <button type="button" class="btn btn-primary ms-2">Add</button>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox" checked>
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span><del>Short task goes here...</del></span>
-                                        <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center pt-2">
-                                <input class="form-check-input m-0" type="checkbox">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 align-items-center justify-content-between">
-                                        <span>Short task goes here...</span>
-                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -496,18 +531,28 @@ if ($result->num_rows > 0) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="index.php" method="post">
                     <div class="mb-3">
                         <label for="dateInput" class="form-label">Date sélectionnée :</label>
-                        <input type="text" class="form-control" id="dateInput" readonly>
+                        <input type="text" class="form-control" id="dateInput" readonly name="date">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateInput" class="form-label">Théme</label>
+                        <input type="text" class="form-control" id="dateInput"  name="nom">
+                    </div>
+                    <div class="mb-3">
+                        <label for="textInput" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="textInput"  name="description">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dateInput" class="form-label">Prix</label>
+                        <input type="text" class="form-control"  name="prix">
                     </div>
                     <!-- Ajoutez ici les champs de votre formulaire -->
                     <button type="submit" class="btn btn-primary">Soumettre</button>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
+      
 
     <!-- JavaScript Libraries -->
     <script>
