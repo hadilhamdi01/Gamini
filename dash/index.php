@@ -214,15 +214,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <a href="#" class="dropdown-item text-center">See all notifications</a>
                         </div>
                     </div>
+                    
+
                     <div class="nav-item dropdown">
-                        <!-- Utilisez $nom_utilisateur et $image_utilisateur où vous en avez besoin dans votre HTML -->
-        <img src="<?php echo isset($image_utilisateur) ? $image_utilisateur : 'placeholder.jpg'; ?>" alt="Image utilisateur">
-        <h1><?php echo isset($nom_utilisateur) ? $nom_utilisateur : 'Utilisateur inconnu'; ?></h1>
-    
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                        </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="..\src\logout.php" class="dropdown-item">Log Out</a>
+                            <a href="..\  src\logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -444,50 +446,53 @@ if ($result->num_rows > 0) {
         </div>
     </div>
 
-                   
-                  
     <div class="col-sm-12 col-md-6 col-xl-4">
     <div class="h-100 bg-secondary rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Compétitions</h6>
-            <a href="events.php">Voir tout</a> <!-- Remplacez "events.php" par le lien vers votre page qui affiche toutes les compétitions -->
+            <a href="#" id="showAll">Voir tout</a>
         </div>
 
-        <?php
-        // Établir une connexion à la base de données
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gamini";
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        <ul class="list-group list-group-flush" id="competitionList">
+            <?php
+            // Établir une connexion à la base de données
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "gamini";
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Vérifier la connexion
-        if ($conn->connect_error) {
-            die("La connexion a échoué : " . $conn->connect_error);
-        }
-
-        // Requête SQL pour sélectionner les données de la table "events"
-        $sql = "SELECT * FROM events";
-        $result = $conn->query($sql);
-
-        // Vérifier si des résultats ont été trouvés
-        if ($result->num_rows > 0) {
-            // Afficher les données dans un format de liste
-            echo "<ul class='list-group'>";
-            while ($row = $result->fetch_assoc()) {
-                echo "<li class='list-group-item d-flex justify-content-between align-items-center'>" . $row["nom"] . "<span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>"; // Vous pouvez personnaliser l'affichage en fonction de vos besoins
+            // Vérifier la connexion
+            if ($conn->connect_error) {
+                die("La connexion a échoué : " . $conn->connect_error);
             }
-            echo "</ul>";
-        } else {
-            echo "Aucun résultat trouvé";
-        }
 
-        // Fermer la connexion à la base de données
-        $conn->close();
-        ?>
+            // Requête SQL pour sélectionner tous les événements de la table "events" par ordre alphabétique du nom
+            $sql = "SELECT * FROM events ORDER BY nom";
+            $result = $conn->query($sql);
+
+            // Vérifier si des résultats ont été trouvés
+            if ($result && $result->num_rows > 0) {
+                // Afficher les données dans un format de liste
+                $counter = 0;
+                while ($row = $result->fetch_assoc()) {
+                    $counter++;
+                    if ($counter <= 6) {
+                        echo "<li class='list-group-item d-flex justify-content-between align-items-center'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
+                    } else {
+                        echo "<li class='list-group-item d-flex justify-content-between align-items-center d-none'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
+                    }
+                }
+            } else {
+                echo "<li class='list-group-item'>Aucun résultat trouvé</li>";
+            }
+
+            // Fermer la connexion à la base de données
+            $conn->close();
+            ?>
+        </ul>
     </div>
 </div>
-
                                 
                             </div>
                             
@@ -582,8 +587,29 @@ if ($result->num_rows > 0) {
 
 
 
-    </script>
-    
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Récupérer tous les éléments de liste
+    var competitions = document.querySelectorAll("#competitionList li");
+
+    // Cacher tous les éléments après le 6ème
+    for (var i = 6; i < competitions.length; i++) {
+        competitions[i].classList.add("d-none");
+    }
+
+    // Ajouter un gestionnaire d'événements pour le lien "Voir tout"
+    document.getElementById("showAll").addEventListener("click", function(e) {
+        e.preventDefault();
+        // Afficher tous les éléments cachés
+        for (var i = 6; i < competitions.length; i++) {
+            competitions[i].classList.remove("d-none");
+        }
+        // Cacher le lien "Voir tout" après avoir affiché toutes les compétitions
+        document.getElementById("showAll").style.display = "none";
+    });
+});
+</script>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="lib/chart/chart.min.js"></script>
