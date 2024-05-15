@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(43, 34, 34);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+  font-family: "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
+  color: #f1eeee;
+}
+
+div#tableContainer {
+  display: table;
+  margin: 20px auto;
+  text-align: center;
+  border-spacing: 10px;
+}
+
+.card {
+  display: table-cell;
+  padding: 5px;
+  border-radius: 15px; /* Ajout de la bordure circulaire */
+}
+
+#report {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#score,
+#guesses {
+  font-weight: bold;
+  margin-right: 10px; /* Ajout de l'espacement entre le score et les essais */
+}
+
+#guesses {
+  margin-right: 0; /* Réglage de l'espacement pour les essais */
+}
+
+.tableRow {
+  display: table-row;
+}
+
+#footer {
+  margin-top: auto;
+  text-align: center;
+}
+
+/* Boutons */
+#back,
+#reload {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #fbaa19;
+  padding: 15px 30px;
+  color: #f4eded;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.25em;
+}
+
+#reload {
+  background-color: #a5210a;
+}
+
+a {
+  text-decoration: none;
+  color: #dfd9d9;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+/* Modèle de victoire */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-content {
+  text-align: center;
+  background-color: #463e3e;
+  margin: 15% auto;
+  padding: 20px;
+  width: 40%;
+  border: 5px dashed #801907;
+}
+
+.closeButton {
+  color: #666666;
+  float: right;
+  font-size: 30px;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: #333333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Ajout de la bordure circulaire aux images */
+img {
+  border-radius: 15px;
+}

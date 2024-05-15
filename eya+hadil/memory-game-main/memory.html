@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Memory Card Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="memory.css">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="memory.js"></script>
+</head>
+
+<body>
+    <div id="report">
+        <p>Score: <span id="score"></span></p>
+        <p>Essais: <span id="guesses"></span></p>
+    </div>
+    <div id="tableContainer">
+        <div class="tableRow">
+            <div class="card"><img id="card00" src="bg.jpg"></div>
+            <div class="card"><img id="card01" src="bg.jpg"></div>
+            <div class="card"><img id="card02" src="bg.jpg"></div>
+            <div class="card"><img id="card03" src="bg.jpg"></div>
+        </div>
+        <div class="tableRow">
+            <div class="card"><img id="card04" src="bg.jpg"></div>
+            <div class="card"><img id="card05" src="bg.jpg"></div>
+            <div class="card"><img id="card06" src="bg.jpg"></div>
+            <div class="card"><img id="card07" src="bg.jpg"></div>
+        </div>
+        <div class="tableRow">
+            <div class="card"><img id="card08" src="bg.jpg"></div>
+            <div class="card"><img id="card09" src="bg.jpg"></div>
+            <div class="card"><img id="card10" src="bg.jpg"></div>
+            <div class="card"><img id="card11" src="bg.jpg"></div>
+        </div>
+    </div>
+    
+    <div id="win" class="modal">
+        <div class="modal-content">
+            <span class="closeButton">&times;</span>
+            <h2>Tu as gagné</h2>
+            <p>Bravo ! Vous avez trouvé toutes les <span id="numCardPairs"></span> paires en <span
+                    id="numGuesses"></span> essais.</p>
+                    <button onClick="window.location.reload();" type="button" class="link" id="reload">Rejouer</button>
+        <a href="https://nowcodethis.com/projects/"><button type="button" class="link" id="back">quitter</button></a>
+        </div>
+    </div>
+    
+</body>
+
+</html>

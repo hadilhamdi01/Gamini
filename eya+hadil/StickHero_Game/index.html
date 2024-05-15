@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <title>Stick Hero clone</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas" height="450" width="900"> </canvas>
+
+    <button class="start" id="start">Jouer</button>
+
+    <label id="title">Héros à la Baguette</label>
+
+    <div id="deathBox">
+        FIN DE PARTIE !
+        <br />
+        <label id="score">Score: 0</label>
+        <br />
+        <label id="highScore">Meilleur score: 0</label>
+        <hr />
+
+        <button class="btnDeath" id="home" title="Home">
+            <img src="img/home.png" />
+        </button>
+
+        <button class="btnDeath start" id="restart" title="Restart">
+            <img src="img/restart.png" />
+        </button>
+    </div>
+
+    <div id="perfect">bien</div>
+</body>
+
+</html>
