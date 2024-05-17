@@ -1,3 +1,4 @@
+
 <?php
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,8 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titre = $_POST['titre'];
 
 
-    // Hasher le mot de passe
-    $hashed_password = password_hash($mdp, PASSWORD_DEFAULT);
+ 
 
     // Établir une connexion à la base de données
     $servername = "localhost";
