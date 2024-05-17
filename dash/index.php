@@ -1,4 +1,3 @@
-
 <?php
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -9,10 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = $_POST['date'];
     $formatted_date = date('Y-m-d', strtotime($date));
     $titre = $_POST['titre'];
-    
 
-     // Hasher le mot de passe
-     $hashed_password = password_hash($mdp, PASSWORD_DEFAULT);
+
+    // Hasher le mot de passe
+    $hashed_password = password_hash($mdp, PASSWORD_DEFAULT);
 
     // Établir une connexion à la base de données
     $servername = "localhost";
@@ -61,8 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -78,13 +78,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-  
+
 </head>
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -101,7 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
                         <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0">Jhon Doe</h6>
@@ -109,9 +112,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="index.php" class="nav-item nav-link active"><i
+                            class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.html" class="dropdown-item">Buttons</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
@@ -123,7 +128,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                                class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
@@ -159,7 +165,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <small>15 minutes ago</small>
@@ -169,7 +176,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <small>15 minutes ago</small>
@@ -179,7 +187,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
                                     <div class="ms-2">
                                         <h6 class="fw-normal mb-0">Jhon send you a message</h6>
                                         <small>15 minutes ago</small>
@@ -214,11 +223,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <a href="#" class="dropdown-item text-center">See all notifications</a>
                         </div>
                     </div>
-                    
+
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
+                                style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
@@ -310,29 +320,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <a href="add.php">Nouveau utilisateur</a>
                     </div>
                     <div class="table-responsive">
-                    <?php
-//  Connexion à la base de données
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "gamini"; 
+                        <?php
+                        //  Connexion à la base de données
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "gamini";
 
-// Créer une connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
+                        // Créer une connexion
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("La connexion a échoué : " . $conn->connect_error);
-}
+                        // Vérifier la connexion
+                        if ($conn->connect_error) {
+                            die("La connexion a échoué : " . $conn->connect_error);
+                        }
 
-//  Exécuter une requête SQL pour extraire les données
-$sql = "SELECT * FROM users"; 
+                        //  Exécuter une requête SQL pour extraire les données
+                        $sql = "SELECT * FROM users";
 
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
 
-                    echo'    <table class="table text-start align-middle table-bordered table-hover mb-0">';
-                         echo'   <thead>
+                            echo '    <table class="table text-start align-middle table-bordered table-hover mb-0">';
+                            echo '   <thead>
                                 <tr class="text-white">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">Id</th>
@@ -344,9 +354,9 @@ if ($result->num_rows > 0) {
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>';
-                           echo' <tbody>';
-                           while ($row = $result->fetch_assoc()) {
-                            echo "<tr>
+                            echo ' <tbody>';
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>
                                     <td><input class='form-check-input' type='checkbox'></td>
                                     <td>" . $row["id"] . "</td>
                                     <td>" . $row["username"] . "</td>
@@ -363,23 +373,23 @@ if ($result->num_rows > 0) {
                             </a>
                                                                 </td>
                                   </tr>";
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                        } else {
+                            echo "0 résultats";
                         }
-                        echo '</tbody>';
-                        echo '</table>';
-                    } else {
-                        echo "0 résultats";
-                    }
-                    // Fermer la connexion à la base de données
-                    $conn->close();
-                    ?>
-                              
-                            </tbody>
+                        // Fermer la connexion à la base de données
+                        $conn->close();
+                        ?>
+
+                        </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <!-- Recent Sales End -->
-         
+
 
 
 
@@ -392,32 +402,32 @@ if ($result->num_rows > 0) {
             <!-- Widgets Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Messages</h6>
                                 <a href="">Show All</a>
                             </div>
-                <?php
-        // Connexion à la base de données
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gamini";
+                            <?php
+                            // Connexion à la base de données
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $dbname = "gamini";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Échec de la connexion : " . $conn->connect_error);
-        }
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            if ($conn->connect_error) {
+                                die("Échec de la connexion : " . $conn->connect_error);
+                            }
 
-        // Récupérer les demandes d'inscription en attente
-        $sql = "SELECT * FROM registration_requests WHERE status = 'pending'";
-        $result = $conn->query($sql);
+                            // Récupérer les demandes d'inscription en attente
+                            $sql = "SELECT * FROM registration_requests WHERE status = 'pending'";
+                            $result = $conn->query($sql);
 
-        // Afficher les demandes d'inscription
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '
+                            // Afficher les demandes d'inscription
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '
                    
                             
                            
@@ -432,216 +442,216 @@ if ($result->num_rows > 0) {
                                 </div>
                             </div>
                             ';
-            }
-        } else {
-            echo "Aucune demande d'inscription en attente.";
-        }
+                                }
+                            } else {
+                                echo "Aucune demande d'inscription en attente.";
+                            }
 
-        // Fermer la connexion à la base de données
-        $conn->close();
-        ?>
-    </div>
-</div>
+                            // Fermer la connexion à la base de données
+                            $conn->close();
+                            ?>
                         </div>
                     </div>
+                </div>
+            </div>
 
 
 
-                    <div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-     
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
 
-   
+
+
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Calendrier</h6>
-                               
+
                             </div>
                             <div id="calender"></div>
-                            
+
                             <div class="bootstrap-datetimepicker-widget usetwentyfour">
-                <!-- Ajoutez votre structure de calendrier ici -->
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 col-xl-4">
-    <div class="h-100 bg-secondary rounded p-4">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Compétitions</h6>
-            <a href="#" id="showAll">Voir tout</a>
-        </div>
-
-        <ul class="list-group list-group-flush" id="competitionList">
-            <?php
-            // Établir une connexion à la base de données
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "gamini";
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Vérifier la connexion
-            if ($conn->connect_error) {
-                die("La connexion a échoué : " . $conn->connect_error);
-            }
-
-            // Requête SQL pour sélectionner tous les événements de la table "events" par ordre alphabétique du nom
-            $sql = "SELECT * FROM events ORDER BY nom";
-            $result = $conn->query($sql);
-
-            // Vérifier si des résultats ont été trouvés
-            if ($result && $result->num_rows > 0) {
-                // Afficher les données dans un format de liste
-                $counter = 0;
-                while ($row = $result->fetch_assoc()) {
-                    $counter++;
-                    if ($counter <= 6) {
-                        echo "<li class='list-group-item d-flex justify-content-between align-items-center'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
-                    } else {
-                        echo "<li class='list-group-item d-flex justify-content-between align-items-center d-none'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
-                    }
-                }
-            } else {
-                echo "<li class='list-group-item'>Aucun résultat trouvé</li>";
-            }
-
-            // Fermer la connexion à la base de données
-            $conn->close();
-            ?>
-        </ul>
-    </div>
-</div>
-                                
+                                <!-- Ajoutez votre structure de calendrier ici -->
                             </div>
-                            
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- Widgets End -->
 
-         
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-secondary rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Compétitions</h6>
+                                <a href="#" id="showAll">Voir tout</a>
+                            </div>
+
+                            <ul class="list-group list-group-flush" id="competitionList">
+                                <?php
+                                // Établir une connexion à la base de données
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "gamini";
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                // Vérifier la connexion
+                                if ($conn->connect_error) {
+                                    die("La connexion a échoué : " . $conn->connect_error);
+                                }
+
+                                // Requête SQL pour sélectionner tous les événements de la table "events" par ordre alphabétique du nom
+                                $sql = "SELECT * FROM events ORDER BY nom";
+                                $result = $conn->query($sql);
+
+                                // Vérifier si des résultats ont été trouvés
+                                if ($result && $result->num_rows > 0) {
+                                    // Afficher les données dans un format de liste
+                                    $counter = 0;
+                                    while ($row = $result->fetch_assoc()) {
+                                        $counter++;
+                                        if ($counter <= 6) {
+                                            echo "<li class='list-group-item d-flex justify-content-between align-items-center'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
+                                        } else {
+                                            echo "<li class='list-group-item d-flex justify-content-between align-items-center d-none'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
+                                        }
+                                    }
+                                } else {
+                                    echo "<li class='list-group-item'>Aucun résultat trouvé</li>";
+                                }
+
+                                // Fermer la connexion à la base de données
+                                $conn->close();
+                                ?>
+                            </ul>
                         </div>
                     </div>
+
                 </div>
+
             </div>
-            <!-- Footer End -->
         </div>
-        <!-- Content End -->
+    </div>
+    </div>
+    <!-- Widgets End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Footer Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-secondary rounded-top p-4">
+            <div class="row">
+                <div class="col-12 col-sm-6 text-center text-sm-start">
+                    &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                </div>
+                <div class="col-12 col-sm-6 text-center text-sm-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                    <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Formulaire de date</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="index.php" method="post">
-                    <div class="mb-3">
-                        <label for="dateInput" class="form-label">Date sélectionnée :</label>
-                        <input type="text" class="form-control" id="dateInput" readonly name="date">
-                    </div>
-                    <div class="mb-3">
-                        <label for="dateInput" class="form-label">Théme</label>
-                        <input type="text" class="form-control" id="dateInput"  name="nom">
-                    </div>
-                    <div class="mb-3">
-                        <label for="textInput" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="textInput"  name="description">
-                    </div>
-                    <div class="mb-3">
-                        <label for="dateInput" class="form-label">Prix</label>
-                        <input type="text" class="form-control"  name="prix">
-                    </div>
-                    <!-- Ajoutez ici les champs de votre formulaire -->
-                    <button type="submit" class="btn btn-primary">Soumettre</button>
-                </form>
-            </div>
-      
-
-    <!-- JavaScript Libraries -->
-    <script>
-   
-
-   document.addEventListener("DOMContentLoaded", function () {
-    // Sélectionnez tous les éléments <td> qui ont l'attribut data-action="selectDay"
-    var days = document.querySelectorAll("td[data-action='selectDay']");
-
-    // Parcours de tous les éléments <td> et ajout d'un écouteur d'événements clic
-    days.forEach(function (day) {
-        day.addEventListener("click", function () {
-            // Récupérez la date à partir de l'attribut data-day
-            var selectedDate = day.getAttribute("data-day");
-
-            // Ouvrir le modal lorsque vous cliquez sur un élément <td>
-            var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-            myModal.show();
-            
-            // Mettre à jour le champ de date du formulaire avec la date sélectionnée
-            document.getElementById('dateInput').value = selectedDate;
-        });
-    });
-});
-
-</script>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Formulaire de date</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="index.php" method="post">
+                        <div class="mb-3">
+                            <label for="dateInput" class="form-label">Date sélectionnée :</label>
+                            <input type="text" class="form-control" id="dateInput" readonly name="date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateInput" class="form-label">Théme</label>
+                            <input type="text" class="form-control" id="dateInput" name="nom">
+                        </div>
+                        <div class="mb-3">
+                            <label for="textInput" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="textInput" name="description">
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateInput" class="form-label">Prix</label>
+                            <input type="text" class="form-control" name="prix">
+                        </div>
+                        <!-- Ajoutez ici les champs de votre formulaire -->
+                        <button type="submit" class="btn btn-primary">Soumettre</button>
+                    </form>
+                </div>
 
 
+                <!-- JavaScript Libraries -->
+                <script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Récupérer tous les éléments de liste
-    var competitions = document.querySelectorAll("#competitionList li");
 
-    // Cacher tous les éléments après le 6ème
-    for (var i = 6; i < competitions.length; i++) {
-        competitions[i].classList.add("d-none");
-    }
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Sélectionnez tous les éléments <td> qui ont l'attribut data-action="selectDay"
+                        var days = document.querySelectorAll("td[data-action='selectDay']");
 
-    // Ajouter un gestionnaire d'événements pour le lien "Voir tout"
-    document.getElementById("showAll").addEventListener("click", function(e) {
-        e.preventDefault();
-        // Afficher tous les éléments cachés
-        for (var i = 6; i < competitions.length; i++) {
-            competitions[i].classList.remove("d-none");
-        }
-        // Cacher le lien "Voir tout" après avoir affiché toutes les compétitions
-        document.getElementById("showAll").style.display = "none";
-    });
-});
-</script>
+                        // Parcours de tous les éléments <td> et ajout d'un écouteur d'événements clic
+                        days.forEach(function (day) {
+                            day.addEventListener("click", function () {
+                                // Récupérez la date à partir de l'attribut data-day
+                                var selectedDate = day.getAttribute("data-day");
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+                                // Ouvrir le modal lorsque vous cliquez sur un élément <td>
+                                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                                myModal.show();
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+                                // Mettre à jour le champ de date du formulaire avec la date sélectionnée
+                                document.getElementById('dateInput').value = selectedDate;
+                            });
+                        });
+                    });
+
+                </script>
+
+
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Récupérer tous les éléments de liste
+                        var competitions = document.querySelectorAll("#competitionList li");
+
+                        // Cacher tous les éléments après le 6ème
+                        for (var i = 6; i < competitions.length; i++) {
+                            competitions[i].classList.add("d-none");
+                        }
+
+                        // Ajouter un gestionnaire d'événements pour le lien "Voir tout"
+                        document.getElementById("showAll").addEventListener("click", function (e) {
+                            e.preventDefault();
+                            // Afficher tous les éléments cachés
+                            for (var i = 6; i < competitions.length; i++) {
+                                competitions[i].classList.remove("d-none");
+                            }
+                            // Cacher le lien "Voir tout" après avoir affiché toutes les compétitions
+                            document.getElementById("showAll").style.display = "none";
+                        });
+                    });
+                </script>
+
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="lib/chart/chart.min.js"></script>
+                <script src="lib/easing/easing.min.js"></script>
+                <script src="lib/waypoints/waypoints.min.js"></script>
+                <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+                <script src="lib/tempusdominus/js/moment.min.js"></script>
+                <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+                <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+                <!-- Template Javascript -->
+                <script src="js/main.js"></script>
 </body>
 
 </html>
