@@ -17,22 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $email = $_POST["email"];
     $ville = $_POST["ville"];
+    $titre = $_POST["titre"];
 
 
     // Hacher le mot de passe
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la base de données
-    $stmt = $conn->prepare("INSERT INTO users (username, password,email, ville) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $username, $hashed_password, $email, $ville);
+    $stmt = $conn->prepare("INSERT INTO registration_requests(username, password,email, ville, titre) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $username, $hashed_password, $email, $ville, $titre);
 
-    // Exécuter la requête SQL
     if ($stmt->execute()) {
-        // Succès d'enregistrement
-        echo '<script>alert("Utilisateur enregistré avec succès !");</script>';
+        echo '<script>alert("Demande d\'inscription soumise avec succès ! Attendez l\'approbation de l\'administrateur.");</script>';
     } else {
-        // Échec d'enregistrement
-        echo '<script>alert("Erreur lors de l\'enregistrement de l\'utilisateur : ' . $conn->error . '");</script>';
+        echo '<script>alert("Erreur lors de la soumission de la demande d\'inscription : ' . $conn->error . '");</script>';
     }
 
     // Fermer la déclaration et la connexion à la base de données
@@ -47,6 +45,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #6E8BFF;
+    box-shadow: 0 0 5px #6E8BFF;
+}
+
+        </style>
 </head>
 <body>
     <section class="container">
@@ -59,6 +75,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text"  name="username" placeholder="USERNAME" />
                     <input type="email"  name="email" placeholder="EMAIL" />
                     <input type="text"  name="ville" placeholder="VILLE" />
+                    <select name="titre" class="input-field opacity">
+    <option value="developpeur">Développeur</option>
+    <option value="joueur">Joueur</option>
+</select>
 
                     <input type="password" name="password" placeholder="PASSWORD" />
                     <button class="opacity" type="submit">SIGN UP</button>

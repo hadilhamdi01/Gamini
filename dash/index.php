@@ -379,59 +379,79 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
             <!-- Recent Sales End -->
+         
+
+
+
+
+
+
+
 
 
             <!-- Widgets Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
-                    <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Messages</h6>
                                 <a href="">Show All</a>
                             </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center border-bottom py-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <div class="w-100 ms-3">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                    <span>Short message goes here...</span>
-                                </div>
-                            </div>
+                <?php
+        // Connexion à la base de données
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "gamini";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        if ($conn->connect_error) {
+            die("Échec de la connexion : " . $conn->connect_error);
+        }
+
+        // Récupérer les demandes d'inscription en attente
+        $sql = "SELECT * FROM registration_requests WHERE status = 'pending'";
+        $result = $conn->query($sql);
+
+        // Afficher les demandes d'inscription
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '
+                   
+                            
+                           
                             <div class="d-flex align-items-center pt-3">
                                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h6 class="mb-0">Jhon Doe</h6>
+                                    <h6 class="mb-0">' . $row["username"] . '</h6>
                                         <small>15 minutes ago</small>
                                     </div>
-                                    <span>Short message goes here...</span>
+                                  
                                 </div>
                             </div>
+                            ';
+            }
+        } else {
+            echo "Aucune demande d'inscription en attente.";
+        }
+
+        // Fermer la connexion à la base de données
+        $conn->close();
+        ?>
+    </div>
+</div>
                         </div>
                     </div>
+
+
+
+                    <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+     
+
+   
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -502,7 +522,7 @@ if ($result->num_rows > 0) {
             </div>
             <!-- Widgets End -->
 
-
+         
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
