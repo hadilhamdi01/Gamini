@@ -76,10 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="circle circle-one"></div>
             <div class="form-container">
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
-                <h1 class="opacity">RESET</h1>
+                <h1 class="opacity">Réinitialiser</h1>
                 <form id="resetForm">
                     <input type="email" name="email" placeholder="Email" />
-                    <button class="opacity" type="submit">Reset</button>
+                    <button class="opacity" type="submit">Réinitialiser</button>
                 </form>
                 <div class="register-forget opacity"></div>
             </div>
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     console.log(result); // Vérifiez les données reçues
                     if (result.success) {
                         // Afficher une alerte si l'e-mail a été envoyé avec succès
-                        alert('The email was sent successfully.');
+                        alert('L\'email a été envoyé avec succès.');
                         // Réinitialiser le formulaire
                         form.reset();
                     } else {
