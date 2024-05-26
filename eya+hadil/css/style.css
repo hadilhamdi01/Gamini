@@ -523,7 +523,7 @@ ol {
 -----------------------*/
 .work {
   overflow: hidden;
-  background: #100028;
+  background-color:black;
 }
 
 .work__gallery {
@@ -804,12 +804,42 @@ ol {
   padding-bottom: 80px;
 }
 
-.blog__item.latest__item {
+.blog__item.latest__item1 .blog__item.latest__item2 .blog__item.latest__item3 .blog__item.latest__item4 .blog__item.latest__item5 .blog__item.latest__item6 .blog__item.latest__item7  {
   margin-bottom: 0;
 }
-.blog__item.latest__item:hover {
+.blog__item.latest__item1:hover {
   border: 1px solid #222222 !important;
-  background: url(../img/blog/blog-1.jpg);
+  background: url(../img/blog/taq.png);
+  background-size: cover;
+}
+.blog__item.latest__item2:hover {
+  border: 1px solid #222222 !important;
+  background: url(../img/blog/bull.png);
+  background-size: cover;
+}
+.blog__item.latest__item3:hover {
+  border: 1px solid #222222 !important;
+  background: url(../img/blog/pat.png);
+  background-size: cover;
+}
+.blog__item.latest__item4:hover {
+  border: 1px solid #222222 !important;
+  background: url(../img/blog/terr.png);
+  background-size: cover;
+}
+.blog__item.latest__item5:hover {
+  border: 1px solid #222222 !important;
+  background: url(../img/blog/puz.jpg);
+  background-size: cover;
+}
+.blog__item.latest__item6:hover {
+  border: 1px solid #222222 !important;
+  background: url(../img/blog/car.jpg);
+  background-size: cover;
+}
+.blog__item.latest__item7:hover {
+  border: 1px solid #222222 !important;
+  background: url(../img/blog/ping.jpg);
   background-size: cover;
 }
 
@@ -850,11 +880,11 @@ ol {
   font-size: 42px;
   font-weight: 700;
   line-height: 55px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 .callto__text p {
   font-size: 15px;
-  color: #ffffff;
+  color: #e3d2d2;
   opacity: 0.7;
   text-transform: uppercase;
   margin-bottom: 55px;
@@ -1008,7 +1038,12 @@ ol {
   Breadcrumb
 -----------------------*/
 .breadcrumb-option {
-  padding-top: 180px;
+  padding-top: 140px;
+  
+}
+.breadcrumb-optionn {
+  padding-top: 90px;
+  background-color: #0e0e0e;
 }
 
 .breadcrumb__text h2 {
@@ -1359,6 +1394,33 @@ ol {
   display: inline-block;
   margin-right: 6px;
 }
+.portfolio__item__text {
+  text-align: center;
+  margin-bottom: 20px; /* Ajoute un espace sous chaque élément pour éviter le chevauchement */
+}
+
+.portfolio__item__text .play-button {
+  background-color: #00bfe7;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  display: block; /* Assure que le bouton est un bloc pour apparaître sous le titre */
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.portfolio__item__text .play-button:hover {
+  background-color: #008bb5;
+}
+
+
 
 /*---------------------
     Blog
@@ -2352,3 +2414,57 @@ ol {
 }
 
 
+
+
+/*---------------------
+  profile joueur
+-----------------------*/
+.profile-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  margin-top: 20px; /* Ajustez cette valeur pour abaisser les éléments */
+}
+
+.profile-header-buttons {
+  display: flex;
+  gap: 10px; /* Espace entre les boutons */
+}
+
+.profile-header-buttons .btn {
+  padding: 10px 20px;
+  width: 130px; /* Fixez une largeur pour les boutons */
+  text-align: center; /* Centrez le texte à l'intérieur du bouton */
+  box-sizing: border-box; /* Incluez le padding et la bordure dans la largeur totale */
+}
+
+.profile-header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 18%; /* Réduisez cette valeur pour diminuer l'espace entre l'image et la description */
+}
+
+.profile-header-img {
+  margin-bottom: 5px; /* Réduisez cette valeur pour diminuer l'espace sous l'image */
+}
+
+.profile-header-img img {
+  width: 150px; /* Ajustez la taille de l'image si nécessaire */
+  height: 150px; /* Ajustez la taille de l'image si nécessaire */
+  border-radius: 50%; /* Pour une image ronde */
+}
+
+.profile-header-info h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #30d8fe;
+}
+
+.profile-header-info p {
+  font-size: 16px;
+  margin: 5px 0 0 0; /* Réduisez la marge supérieure pour diminuer l'espace sous le nom */
+  color: #666;
+}

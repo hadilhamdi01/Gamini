@@ -72,18 +72,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="circle circle-one"></div>
             <div class="form-container">
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
-                <h1 class="opacity">REGISTER</h1>
+                <h1 class="opacity">Inscription</h1>
                 <form action="register.php" method="POST">
-                    <input type="text"  name="username" placeholder="USERNAME" />
+                    <input type="text"  name="username" placeholder="Nom" />
                     <input type="email"  name="email" placeholder="EMAIL" />
                     <input type="text"  name="ville" placeholder="VILLE" />
                     <select name="titre" class="input-field opacity">
     <option value="developpeur">Développeur</option>
     <option value="joueur">Joueur</option>
 </select>
-
-                    <input type="password" name="password" placeholder="PASSWORD" />
-                    <button class="opacity" type="submit">SIGN UP</button>
+                    <input type="password" name="password" placeholder="Mot de passe" />
+                    <button class="opacity" type="submit">S'inscrire</button>
                 </form>
             </div>
             <div class="circle circle-two"></div>

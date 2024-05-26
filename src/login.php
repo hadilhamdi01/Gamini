@@ -54,8 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Rediriger en fonction du rôle de l'utilisateur
             if ($row["role"] == "admin") {
                 header("Location: ../dash/index.php");
-            } else {
-                header("Location: welcome.php");
+            } else if ($row["role"] == "user") {
+                header("Location: ../eya+hadil/portfolio.html");
             }
             exit();
         }
@@ -95,15 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="circle circle-one"></div>
             <div class="form-container">
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
-                <h1 class="opacity">LOGIN</h1>
+                <h1 class="opacity">Connexion</h1>
                 <form action="login.php" method="POST">
-                    <input type="text"  name="username" placeholder="USERNAME" />
-                    <input type="password" name="password" placeholder="PASSWORD" />
-                    <button class="opacity" type="submit">SUBMIT</button>
+                    <input type="text"  name="username" placeholder="nom" />
+                    <input type="password" name="password" placeholder="mot de passe" />
+                    <button class="opacity" type="submit">Se connecter</button>
                 </form>
                 <div class="register-forget opacity">
-                    <a href="register.php">REGISTER</a>
-                    <a href="reset_password_form.php">FORGOT PASSWORD</a>
+                    <a href="register.php">S'inscrire</a>
+                    <a href="reset_password_form.php">Mot de passe oblier</a>
                 </div>
             </div>
             <div class="circle circle-two"></div>

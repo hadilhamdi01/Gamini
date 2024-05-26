@@ -49,7 +49,7 @@ function play(){
             }else{
                 if(bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top){
                     game_state = 'End';
-                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
+                    message.innerHTML = 'fin de jeu'.fontcolor('red') + '<br>Rejouer';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();

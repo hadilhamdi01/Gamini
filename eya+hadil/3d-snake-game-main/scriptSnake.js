@@ -171,7 +171,7 @@ function startGame(){
 				snakeHead.y >21){
 
 
-					gameOver('Game Over, you hit the edge.\nScore = ');
+					gameOver('fin de jeu, Tu as touché le bord.\nScore = ');
 			} 
 			
 			// snake intersection logic
@@ -181,7 +181,7 @@ function startGame(){
 					if(typeof sBody[i] != 'undefined'){
 						if(snakeHead.x == sBody[i].x && snakeHead.y == sBody[i].y){
 							// console.log('collided');
-							gameOver('Game Over, you hit yourself.\nScore = ');
+							gameOver('fin de jeu, Tu as touche le bord.\nScore = ');
 						}
 					}
 				}	
