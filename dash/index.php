@@ -8,24 +8,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = $_POST['date'];
     $formatted_date = date('Y-m-d', strtotime($date));
     $titre = $_POST['titre'];
-   
- 
-     
     // Établir une connexion à la base de données
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "gamini";
     $conn = new mysqli($servername, $username, $password, $dbname);
- 
+
     // Vérifier la connexion
     if ($conn->connect_error) {
         die("La connexion a échoué : " . $conn->connect_error);
     }
- 
+
     // Requête SQL pour insérer un nouvel utilisateur
     $sql = "INSERT INTO events (date, nom,description,prix) VALUES ('$formatted_date', '$nom', '$description', '$prix')";
- 
+
     if ($conn->query($sql) === TRUE) {
         // Rediriger vers une page de succès ou afficher un message de succès
         header("Location: index.php");
@@ -33,48 +30,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Erreur lors de l'ajout de la competition : " . $conn->error;
     }
- 
+
     // Fermer la connexion à la base de données
     $conn->close();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="utf-8">
     <title>DarkPan - Bootstrap 5 Admin Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
- 
+
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
- 
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
         rel="stylesheet">
- 
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
- 
+
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
- 
- 
+
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
- 
+
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    
 </head>
- 
+<style>
+    .hidden-message {
+        display: none;
+    }
+</style>
+
 <body>
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -85,8 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <!-- Spinner End -->
- 
- 
+
+
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
@@ -116,8 +117,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </nav>
         </div>
         <!-- Sidebar End -->
- 
- 
+
+
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
@@ -198,8 +199,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <a href="#" class="dropdown-item text-center">See all notifications</a>
                         </div>
                     </div>
- 
- 
+
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/hadil.jpg" alt=""
@@ -215,8 +216,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </nav>
             <!-- Navbar End -->
- 
- 
+
+
             <!-- Sale & Revenue Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -259,8 +260,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <!-- Sale & Revenue End -->
- 
- 
+
+
             <!-- Sales Chart Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -285,8 +286,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <!-- Sales Chart End -->
- 
- 
+
+
             <!-- Users -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
@@ -296,28 +297,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="table-responsive">
                         <?php
-//  Connexion à la base de données
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "gamini";
- 
-// Créer une connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
- 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("La connexion a échoué : " . $conn->connect_error);
-}
- 
-//  Exécuter une requête SQL pour extraire les données
-$sql = "SELECT * FROM users";
- 
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
- 
-                    echo'    <table class="table text-start align-middle table-bordered table-hover mb-0">';
-                         echo'   <thead>
+                        //  Connexion à la base de données
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "gamini";
+
+                        // Créer une connexion
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+
+                        // Vérifier la connexion
+                        if ($conn->connect_error) {
+                            die("La connexion a échoué : " . $conn->connect_error);
+                        }
+
+                        //  Exécuter une requête SQL pour extraire les données
+                        $sql = "SELECT * FROM users";
+
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+
+                            echo '    <table class="table text-start align-middle table-bordered table-hover mb-0">';
+                            echo '   <thead>
                                 <tr class="text-white">
                                     <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                     <th scope="col">Id</th>
@@ -329,9 +330,9 @@ if ($result->num_rows > 0) {
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>';
-                           echo' <tbody>';
-                           while ($row = $result->fetch_assoc()) {
-                            echo "<tr>
+                            echo ' <tbody>';
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>
                                     <td><input class='form-check-input' type='checkbox'></td>
                                     <td>" . $row["id"] . "</td>
                                     <td>" . $row["username"] . "</td>
@@ -348,32 +349,32 @@ if ($result->num_rows > 0) {
                             </a>
                                                                 </td>
                                   </tr>";
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                        } else {
+                            echo "0 résultats";
                         }
-                        echo '</tbody>';
-                        echo '</table>';
-                    } else {
-                        echo "0 résultats";
-                    }
-                    // Fermer la connexion à la base de données
-                    $conn->close();
-                    ?>
- 
+                        // Fermer la connexion à la base de données
+                        $conn->close();
+                        ?>
+
                         </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <!-- Recent Sales End -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+
+
+
+
             <!-- Widgets Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -384,66 +385,90 @@ if ($result->num_rows > 0) {
                                 <a href="">Voir tout</a>
                             </div>
                             <?php
-        // Connexion à la base de données
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gamini";
- 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Échec de la connexion : " . $conn->connect_error);
-        }
- 
-        // Récupérer les demandes d'inscription en attente
-        $sql = "SELECT * FROM registration_requests WHERE status = 'pending'";
-        $result = $conn->query($sql);
- 
-        // Afficher les demandes d'inscription
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '
+                            // Connexion à la base de données
+                            $servername = "localhost";
+                            $username = "root";
+                            $password = "";
+                            $dbname = "gamini";
+
+                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            if ($conn->connect_error) {
+                                die("Échec de la connexion : " . $conn->connect_error);
+                            }
+
+                            // Récupérer les demandes d'inscription en attente
+                            $sql = "SELECT * FROM registration_requests WHERE status = 'pending'";
+                            $result = $conn->query($sql);
+
+                            // Afficher les demandes d'inscription
+                            if ($result->num_rows > 0) {
+                                $count = 0;
+                               
+                              
+                                while ($row = $result->fetch_assoc()) {
+                                    $count++;
+                                    $hiddenClass = $count > 4 ? 'hidden-message' : '';
+
+                                     // Calculer la différence de temps en minutes et heures
+                        $requestDate = new DateTime($row["date"]);
+                        $currentDate = new DateTime();
+                        $interval = $currentDate->diff($requestDate);
+
+                        $minutes = $interval->days * 24 * 60;
+                        $minutes += $interval->h * 60;
+                        $minutes += $interval->i;
+
+                        if ($minutes < 60) {
+                            $timeAgo = $minutes . ' minutes ago';
+                        } else {
+                            $hours = floor($minutes / 60);
+                            $timeAgo = $hours . ' hours ago';
+                        }
+
+                                    echo '
                    
                            
                            
-                            <div class="d-flex align-items-center pt-3">
-                                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                    <div class="d-flex align-items-center pt-3 ' . $hiddenClass . ' message-item" data-id="' . $row["id"] . '">
+                            
+                                <img class="rounded-circle flex-shrink-0" src="img/user1.png" alt="" style="width: 40px; height: 40px;">
                                 <div class="w-100 ms-3">
                                     <div class="d-flex w-100 justify-content-between">
                                     <h6 class="mb-0">' . $row["username"] . '</h6>
-                                        <small>15 minutes ago</small>
+                                    <small>' . $timeAgo . '</small>
+                                       
                                     </div>
                                  
                                 </div>
                             </div>
                             ';
-            }
-        } else {
-            echo "Aucune demande d'inscription en attente.";
-        }
- 
-        // Fermer la connexion à la base de données
-        $conn->close();
-        ?>
+                                }
+                            } else {
+                                echo "Aucune demande d'inscription en attente.";
+                            }
+
+                            // Fermer la connexion à la base de données
+                            $conn->close();
+                            ?>
                         </div>
                     </div>
- 
- 
+
+
                     <div class="  col-md-4 ">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <h6 class="mb-0">Calendrier</h6>
- 
+
                             </div>
                             <div id="calender"></div>
- 
+
                             <div class="bootstrap-datetimepicker-widget usetwentyfour">
                                 <!-- Ajoutez votre structure de calendrier ici -->
                             </div>
                         </div>
                     </div>
- 
- 
+
+
                     <div class=" col-md-4 ">
                         <div class="h-100 bg-secondary rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-4">
@@ -452,76 +477,76 @@ if ($result->num_rows > 0) {
                             </div>
                             <ul class="list-group list-group-flush" id="competitionList">
                                 <?php
-            // Établir une connexion à la base de données
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "gamini";
-            $conn = new mysqli($servername, $username, $password, $dbname);
- 
-            // Vérifier la connexion
-            if ($conn->connect_error) {
-                die("La connexion a échoué : " . $conn->connect_error);
-            }
- 
-            // Requête SQL pour sélectionner tous les événements de la table "events" par ordre alphabétique du nom
-            $sql = "SELECT * FROM events ORDER BY nom";
-            $result = $conn->query($sql);
- 
-            // Vérifier si des résultats ont été trouvés
-            if ($result && $result->num_rows > 0) {
-                // Afficher les données dans un format de liste
-                $counter = 0;
-                while ($row = $result->fetch_assoc()) {
-                    $counter++;
-                    if ($counter <= 6) {
-                        echo "<li class='list-group-item d-flex justify-content-between align-items-center'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
-                    } else {
-                        echo "<li class='list-group-item d-flex justify-content-between align-items-center d-none'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
-                    }
-                }
-            } else {
-                echo "<li class='list-group-item'>Aucun résultat trouvé</li>";
-            }
- 
-            // Fermer la connexion à la base de données
-            $conn->close();
-            ?>
+                                // Établir une connexion à la base de données
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $dbname = "gamini";
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                // Vérifier la connexion
+                                if ($conn->connect_error) {
+                                    die("La connexion a échoué : " . $conn->connect_error);
+                                }
+
+                                // Requête SQL pour sélectionner tous les événements de la table "events" par ordre alphabétique du nom
+                                $sql = "SELECT * FROM events ORDER BY nom";
+                                $result = $conn->query($sql);
+
+                                // Vérifier si des résultats ont été trouvés
+                                if ($result && $result->num_rows > 0) {
+                                    // Afficher les données dans un format de liste
+                                    $counter = 0;
+                                    while ($row = $result->fetch_assoc()) {
+                                        $counter++;
+                                        if ($counter <= 6) {
+                                            echo "<li class='list-group-item d-flex justify-content-between align-items-center'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
+                                        } else {
+                                            echo "<li class='list-group-item d-flex justify-content-between align-items-center d-none'><a href='detail.php?id_ev={$row['id_ev']}'>" . $row["nom"] . "</a><span class='badge bg-primary rounded-pill'>" . $row["date"] . "</span></li>";
+                                        }
+                                    }
+                                } else {
+                                    echo "<li class='list-group-item'>Aucun résultat trouvé</li>";
+                                }
+
+                                // Fermer la connexion à la base de données
+                                $conn->close();
+                                ?>
                             </ul>
                         </div>
                     </div>
                 </div>
- 
+
             </div>
         </div>
-        </div>
-        <!-- Widgets End -->
- 
- 
-        <!-- Footer Start -->
-        <div class="container-fluid pt-4 px-4">
-            <div class="bg-secondary rounded-top p-4">
-                <div class="row">
-                    <div class="col-12 col-sm-6 text-center text-sm-start">
-                        &copy; <a href="#">Your Site Name</a>, All Right Reserved.
-                    </div>
-                    <div class="col-12 col-sm-6 text-center text-sm-end">
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                        <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                    </div>
+    </div>
+    <!-- Widgets End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-secondary rounded-top p-4">
+            <div class="row">
+                <div class="col-12 col-sm-6 text-center text-sm-start">
+                    &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                </div>
+                <div class="col-12 col-sm-6 text-center text-sm-end">
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                    <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
+    </div>
+    <!-- Footer End -->
     </div>
     <!-- Content End -->
- 
- 
+
+
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
- 
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -552,57 +577,77 @@ if ($result->num_rows > 0) {
                         <button type="submit" class="btn btn-primary">Soumettre</button>
                     </form>
                 </div>
- 
- 
+
+
                 <!-- JavaScript Libraries -->
                 <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    // Sélectionnez tous les éléments <td> qui ont l'attribut data-action="selectDay"
-                    var days = document.querySelectorAll("td[data-action='selectDay']");
- 
-                    // Parcours de tous les éléments <td> et ajout d'un écouteur d'événements clic
-                    days.forEach(function(day) {
-                        day.addEventListener("click", function() {
-                            // Récupérez la date à partir de l'attribut data-day
-                            var selectedDate = day.getAttribute("data-day");
- 
-                            // Ouvrir le modal lorsque vous cliquez sur un élément <td>
-                            var myModal = new bootstrap.Modal(document.getElementById(
-                                'exampleModal'));
-                            myModal.show();
- 
-                            // Mettre à jour le champ de date du formulaire avec la date sélectionnée
-                            document.getElementById('dateInput').value = selectedDate;
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Sélectionnez tous les éléments <td> qui ont l'attribut data-action="selectDay"
+                        var days = document.querySelectorAll("td[data-action='selectDay']");
+
+                        // Parcours de tous les éléments <td> et ajout d'un écouteur d'événements clic
+                        days.forEach(function (day) {
+                            day.addEventListener("click", function () {
+                                // Récupérez la date à partir de l'attribut data-day
+                                var selectedDate = day.getAttribute("data-day");
+
+                                // Ouvrir le modal lorsque vous cliquez sur un élément <td>
+                                var myModal = new bootstrap.Modal(document.getElementById(
+                                    'exampleModal'));
+                                myModal.show();
+
+                                // Mettre à jour le champ de date du formulaire avec la date sélectionnée
+                                document.getElementById('dateInput').value = selectedDate;
+                            });
                         });
                     });
-                });
                 </script>
- 
- 
- 
+
+
+
                 <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    // Récupérer tous les éléments de liste
-                    var competitions = document.querySelectorAll("#competitionList li");
- 
-                    // Cacher tous les éléments après le 6ème
-                    for (var i = 6; i < competitions.length; i++) {
-                        competitions[i].classList.add("d-none");
-                    }
- 
-                    // Ajouter un gestionnaire d'événements pour le lien "Voir tout"
-                    document.getElementById("showAll").addEventListener("click", function(e) {
-                        e.preventDefault();
-                        // Afficher tous les éléments cachés
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Récupérer tous les éléments de liste
+                        var competitions = document.querySelectorAll("#competitionList li");
+
+                        // Cacher tous les éléments après le 6ème
                         for (var i = 6; i < competitions.length; i++) {
-                            competitions[i].classList.remove("d-none");
+                            competitions[i].classList.add("d-none");
                         }
-                        // Cacher le lien "Voir tout" après avoir affiché toutes les compétitions
-                        document.getElementById("showAll").style.display = "none";
+
+                        // Ajouter un gestionnaire d'événements pour le lien "Voir tout"
+                        document.getElementById("showAll").addEventListener("click", function (e) {
+                            e.preventDefault();
+                            // Afficher tous les éléments cachés
+                            for (var i = 6; i < competitions.length; i++) {
+                                competitions[i].classList.remove("d-none");
+                            }
+                            // Cacher le lien "Voir tout" après avoir affiché toutes les compétitions
+                            document.getElementById("showAll").style.display = "none";
+                        });
                     });
-                });
                 </script>
- 
+                <script>
+                    function showAllMessages() {
+                        const messages = document.querySelectorAll('.hidden-message');
+                        messages.forEach(message => {
+                            message.style.display = 'flex';
+                        });
+                    }
+                </script>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const messages = document.querySelectorAll('.message-item');
+                        messages.forEach(function (message) {
+                            message.addEventListener('click', function () {
+                                const id = message.getAttribute('data-id');
+                                window.location.href = 'details_demande.php?id=' + id;
+                            });
+                        });
+                    });
+                </script>
+
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
                 <script src="lib/chart/chart.min.js"></script>
@@ -612,9 +657,9 @@ if ($result->num_rows > 0) {
                 <script src="lib/tempusdominus/js/moment.min.js"></script>
                 <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
                 <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
- 
+
                 <!-- Template Javascript -->
                 <script src="js/main.js"></script>
 </body>
- 
+
 </html>

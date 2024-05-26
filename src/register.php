@@ -18,14 +18,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $ville = $_POST["ville"];
     $titre = $_POST["titre"];
+    $role = 'user';
+    $status='pending';
 
 
     // Hacher le mot de passe
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Préparer et exécuter la requête SQL pour insérer l'utilisateur dans la base de données
-    $stmt = $conn->prepare("INSERT INTO registration_requests(username, password,email, ville, titre) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $username, $hashed_password, $email, $ville, $titre);
+    $stmt = $conn->prepare("INSERT INTO registration_requests(username, password,email, ville, titre, role, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssss", $username, $hashed_password, $email, $ville, $titre, $role, $status);
 
     if ($stmt->execute()) {
         echo '<script>alert("Demande d\'inscription soumise avec succès ! Attendez l\'approbation de l\'administrateur.");</script>';
