@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->isHTML(true);
         $mail->Subject = 'Réinitialisation de mots de passe';
-        $mail->Body = 'Votre nouveau mot de passe est : ' . $nouveauMotDePasse;
+        $mail->Body = "Bonjour " . $row_request['username'] . ',Votre nouveau mot de passe est : ' . $nouveauMotDePasse .".<br><br>Cordialement,<br>L'équipe.";
         $mail->AltBody = 'Le texte comme simple élément textuel';
 
         // Essayez d'envoyer l'e-mail
