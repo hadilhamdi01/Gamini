@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
 </head>
 <style>
     .hidden-message {
@@ -475,6 +476,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h6 class="mb-0">Compétitions</h6>
                                 <a href="#" id="showAll">Voir tout</a>
                             </div>
+
                             <ul class="list-group list-group-flush" id="competitionList">
                                 <?php
                                 // Établir une connexion à la base de données
