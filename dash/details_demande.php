@@ -17,6 +17,7 @@ if (isset($_GET['id'])) {
         $email = $row["email"];
         $date = $row["date"];
         $status = $row["status"];
+        $titre = $row["titre"];
     } else {
         echo 'Aucun message trouvé.';
         exit();
@@ -84,6 +85,7 @@ $conn->close();
                         <p>Username: <?php echo $username; ?></p>
                         <p>Email: <?php echo $email; ?></p>
                         <p>Date de demande: <?php echo $date; ?></p>
+                        <p>Titre: <?php echo $titre; ?></p>
                        
                         <p>Statut: <span id="status-text"><?php echo $status; ?></span></p>
                         

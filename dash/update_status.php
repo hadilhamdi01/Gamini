@@ -48,20 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt_select_request->close();
 
     // Insérer les données dans la table users
-    $stmt_insert_user = $conn->prepare("INSERT INTO users (username, password, role, email, ville, image, titre) VALUES (?, ?, ?, ?, ?, DEFAULT, DEFAULT)");
+    $stmt_insert_user = $conn->prepare("INSERT INTO users (username, password, role, email, ville, titre, image) VALUES (?, ?, ?, ?, ?, ?, DEFAULT)");
     if ($stmt_insert_user === false) {
         die('Erreur de préparation de la requête d\'insertion : ' . $conn->error);
     }
     
     // Vous devrez générer un mot de passe sécurisé pour chaque utilisateur. C'est un exemple basique, vous devez utiliser des méthodes de hachage sécurisé.
     $password = password_hash("default_password", PASSWORD_DEFAULT); 
-
     $role = "user"; 
 
-    $bind_insert_user = $stmt_insert_user->bind_param("sssss", $row_request['username'], $password, $role, $row_request['email'], $row_request['ville']);
+    $bind_insert_user = $stmt_insert_user->bind_param("ssssss", $row_request['username'], $password, $role, $row_request['email'], $row_request['ville'], $row_request['titre']);
     if ($bind_insert_user === false) {
         die('Erreur de liaison des paramètres : ' . $stmt_insert_user->error);
     }
+
 
     $exec_insert_user = $stmt_insert_user->execute();
     if ($exec_insert_user === false) {
