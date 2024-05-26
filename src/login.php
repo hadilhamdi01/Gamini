@@ -23,6 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    $loginStatus = "failure";
+    $userId = null;
+
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $hashed_password = $row["password"];
@@ -34,6 +37,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["username"] = $row["username"];
             $_SESSION["role"] = $row["role"];
 
+            // Enregistrer l'historique de la connexion
+            $userId = $row["id"];
+            $loginStatus = "success";
+
+            // Enregistrer l'historique de la connexion (succès)
+            $ipAddress = $_SERVER['REMOTE_ADDR'];
+            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $loginTime = date('Y-m-d H:i:s');
+
+            $historyStmt = $conn->prepare("INSERT INTO login_history (user_id, username, login_time, ip_address, user_agent, login_status) VALUES (?, ?, ?, ?, ?, ?)");
+            $historyStmt->bind_param("isssss", $userId, $username, $loginTime, $ipAddress, $userAgent, $loginStatus);
+            $historyStmt->execute();
+            $historyStmt->close();
+
             // Rediriger en fonction du rôle de l'utilisateur
             if ($row["role"] == "admin") {
                 header("Location: ../dash/index.php");
@@ -41,20 +58,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: welcome.php");
             }
             exit();
-        } else {
-            $error_message = "Mot de passe incorrect";
         }
-    } else {
-        $error_message = "Nom d'utilisateur incorrect";
     }
+
+    // Enregistrer l'historique de la connexion (échec)
+    $ipAddress = $_SERVER['REMOTE_ADDR'];
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    $loginTime = date('Y-m-d H:i:s');
+
+    $historyStmt = $conn->prepare("INSERT INTO login_history (user_id, username, login_time, ip_address, user_agent, login_status) VALUES (?, ?, ?, ?, ?, ?)");
+    $historyStmt->bind_param("isssss", $userId, $username, $loginTime, $ipAddress, $userAgent, $loginStatus);
+    $historyStmt->execute();
+    $historyStmt->close();
+
+    $error_message = "Nom d'utilisateur ou mot de passe incorrect";
 
     $stmt->close();
     $conn->close();
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
