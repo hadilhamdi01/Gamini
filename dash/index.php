@@ -72,11 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-<<<<<<<<< Temporary merge branch 1
 
-=========
-    
->>>>>>>>> Temporary merge branch 2
 </head>
 <style>
     .hidden-message {
