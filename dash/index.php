@@ -479,10 +479,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h6 class="mb-0">Compétitions</h6>
                                 <a href="#" id="showAll">Voir tout</a>
                             </div>
-<<<<<<<<< Temporary merge branch 1
 
-=========
->>>>>>>>> Temporary merge branch 2
                             <ul class="list-group list-group-flush" id="competitionList">
                                 <?php
                                 // Établir une connexion à la base de données
