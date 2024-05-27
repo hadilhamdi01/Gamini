@@ -252,11 +252,11 @@ session_start();
                     <div class="border-bottom p-4">
                         <div class="osahan-user text-center">
                             <div class="osahan-user-media">
-                                <img class="mb-3 rounded-pill shadow-sm mt-1" src="img/eya.jpg"
+                                <img class="mb-3 rounded-pill shadow-sm mt-1" src="img/balsem.jpg"
                                     alt="gurdeep singh osahan">
                                 <div class="osahan-user-media-body">
-                                    <h6 class="mb-2">Eya Zaafouri</h6>
-                                    <p class="mb-1">6</p>
+                                    <h6 class="mb-2">Balsem Hamdi</h6>
+                                    <p class="mb-1">75</p>
 
                                 </div>
                             </div>
@@ -264,7 +264,7 @@ session_start();
                     </div>
                     <ul class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="btn btn-outline-success" href="addrecdev.php"><i
+                            <a class="btn btn-outline-success" href="addrecjou.php"><i
                                     class="icofont-headphone-alt"></i>Ajouter une
                                 nouvelle réclamation</a>
                         </li>
@@ -304,7 +304,7 @@ session_start();
                                         }
 
                                         // Requête SQL pour récupérer les réclamations de l'utilisateur connecté
-                                        $sql = "SELECT * FROM reclam_dev WHERE utilisateur_id = $user_id";
+                                        $sql = "SELECT * FROM reclam_jou WHERE utilisateur_id = $user_id";
 
                                         $result = $conn->query($sql);
 

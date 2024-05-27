@@ -1,8 +1,5 @@
-<?php
 
-// Démarrer la session
-session_start();
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -252,22 +249,18 @@ session_start();
                     <div class="border-bottom p-4">
                         <div class="osahan-user text-center">
                             <div class="osahan-user-media">
-                                <img class="mb-3 rounded-pill shadow-sm mt-1" src="img/eya.jpg"
+                                <img class="mb-3 rounded-pill shadow-sm mt-1" src="img/balsem.jpg"
                                     alt="gurdeep singh osahan">
                                 <div class="osahan-user-media-body">
-                                    <h6 class="mb-2">Eya Zaafouri</h6>
-                                    <p class="mb-1">6</p>
+                                    <h6 class="mb-2">Balsem Hamdi</h6>
+                                    <p class="mb-1">75</p>
 
                                 </div>
                             </div>
                         </div>
                     </div>
                     <ul class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="btn btn-outline-success" href="addrecdev.php"><i
-                                    class="icofont-headphone-alt"></i>Ajouter une
-                                nouvelle réclamation</a>
-                        </li>
+                     
                     </ul>
                 </div>
             </div>
@@ -276,132 +269,36 @@ session_start();
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane  fade  active show" id="orders" role="tabpanel"
                             aria-labelledby="orders-tab">
-                            <h4 class="font-weight-bold mt-0 mb-4">Mes Réclamations</h4>
+                            <h4 class="font-weight-bold mt-0 mb-4">Ajouter Reclamation</h4>
                             <div class="bg card mb-4 order-list shadow-sm custom-bg">
                                 <div class="gold-members p-4">
-                                    <a href="#">
-                                    </a>
-
-                                    <?php
-
-
-                                    // Vérifier si l'utilisateur est connecté
-                                    if (isset($_SESSION['user_id'])) {
-                                        // L'utilisateur est connecté, récupérer son ID
-                                        $user_id = $_SESSION['user_id'];
-
-                                        // Établir une connexion à la base de données (à remplir avec vos propres informations)
-                                        $servername = "localhost";
-                                        $username = "root";
-                                        $password = "";
-                                        $database = "gamini";
-
-                                        $conn = new mysqli($servername, $username, $password, $database);
-
-                                        // Vérifier la connexion
-                                        if ($conn->connect_error) {
-                                            die("Connection failed: " . $conn->connect_error);
-                                        }
-
-                                        // Requête SQL pour récupérer les réclamations de l'utilisateur connecté
-                                        $sql = "SELECT * FROM reclam_dev WHERE utilisateur_id = $user_id";
-
-                                        $result = $conn->query($sql);
-
-                                        if ($result->num_rows > 0) {
-                                            // Affichage des réclamations
-                                            echo "<ul>";
-                                            while ($row = $result->fetch_assoc()) {
-                                                ?>
-                                                <div class="media">
-                                                    <div class="media-body">
-                                                        <a href="#">
-                                                            <span class="float-right text-info">Deliverée le
-                                                                <?php echo $row['date_reclamation']; ?><i
-                                                                    class="icofont-check-circled text-success"></i></span>
-                                                        </a>
-                                                        <h6 class="mb-2">
-                                                            <a href="#" class="text-black"><?php echo $row['sujet']; ?></a>
-                                                        </h6>
-
-                                                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>
-                                                            <?php echo $row['description']; ?>
-                                                        </p>
-
-                                                        <hr>
-                                                        <div class="float-right">
-                                                          
-                                                           
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <?php
-                                            }
-                                        } else {
-                                            echo "Aucune réclamation trouvée pour cet utilisateur.";
-                                        }
-                                        // Fermer la connexion à la base de données
-                                        $conn->close();
-                                    } else {
-                                        // L'utilisateur n'est pas connecté, rediriger vers la page de connexion par exemple
-                                        header("Location: login.php");
-                                        exit();
-                                    }
-
-
-                                    ?>
-
+                                <form action="traitement_reclamation.php" method="POST">
+        <label for="utilisateur_id">ID de l'utilisateur:</label>
+        <input type="text" id="utilisateur_id" name="utilisateur_id" required><br><br>
+        
+        <label for="sujet">Sujet:</label>
+        <input type="text" id="sujet" name="sujet" required><br><br>
+        
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+        
+        <input type="submit" value="Ajouter la réclamation">
+    </form>
                                 </div>
                             </div>
+                           
 
-
-
-                        </div>
-                    </div>
+                            
                 </div>
             </div>
-            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-            <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
-            <script type="text/javascript">
-            </script>
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    var openPopupButton = document.getElementById("openPopup");
-                    var popup = document.getElementById("popup");
-                    var closePopupButton = document.getElementById("closePopup");
-
-                    openPopupButton.addEventListener("click", function () {
-                        popup.style.display = "flex";
-                    });
-
-                    closePopupButton.addEventListener("click", function () {
-                        popup.style.display = "none";
-                    });
-
-                    var addReviewButton = document.getElementById("addReview");
-                    var titleInput = document.getElementById("title");
-                    var descriptionInput = document.getElementById("description");
-
-                    addReviewButton.addEventListener("click", function () {
-                        var title = titleInput.value;
-                        var description = descriptionInput.value;
-
-                        var xhr = new XMLHttpRequest();
-                        xhr.open("POST", "traitement_reclamation.php", true);
-                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                        xhr.onreadystatechange = function () {
-                            if (xhr.readyState == 4 && xhr.status == 200) {
-                                alert(xhr.responseText);
-                                titleInput.value = "";
-                                descriptionInput.value = "";
-                                popup.style.display = "none";
-                            }
-                        };
-                        xhr.send("title=" + encodeURIComponent(title) + "&description=" + encodeURIComponent(description));
-                    });
-                });
-            </script>
+        </div>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+    </script>
+   
 </body>
 
 </html>

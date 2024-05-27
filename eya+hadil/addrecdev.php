@@ -260,11 +260,7 @@
                         </div>
                     </div>
                     <ul class="nav nav-tabs flex-column border-0 pt-4 pl-4 pb-4" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="btn btn-outline-success" href="addrecdev.php"><i
-                                    class="icofont-headphone-alt"></i>Ajouter une
-                                nouvelle réclamation</a>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>
@@ -276,7 +272,7 @@
                             <h4 class="font-weight-bold mt-0 mb-4">Ajouter Reclamation</h4>
                             <div class="bg card mb-4 order-list shadow-sm custom-bg">
                                 <div class="gold-members p-4">
-                                <form action="traitement_reclamation.php" method="POST">
+                                <form action="traitement-recdev.php" method="POST">
         <label for="utilisateur_id">ID de l'utilisateur:</label>
         <input type="text" id="utilisateur_id" name="utilisateur_id" required><br><br>
         
