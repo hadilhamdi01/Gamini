@@ -479,10 +479,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <h6 class="mb-0">Compétitions</h6>
                                 <a href="#" id="showAll">Voir tout</a>
                             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 5104b50d249107337e1f5b7cf34edfed25ff4009
                             <ul class="list-group list-group-flush" id="competitionList">
                                 <?php
                                 // Établir une connexion à la base de données
