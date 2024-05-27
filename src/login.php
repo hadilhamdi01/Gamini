@@ -1,62 +1,63 @@
 <?php
 session_start();
-
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Connexion à la base de données
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "gamini";
-
+ 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Échec de la connexion : " . $conn->connect_error);
     }
-
+ 
+    // Récupérer le nom d'utilisateur et le mot de passe du formulaire
     $username = $_POST["username"];
     $password = $_POST["password"];
-
-    $stmt = $conn->prepare("SELECT id, username, password, role, titre FROM users WHERE username = ?");
-    if (!$stmt) {
-        die("Échec de la préparation de la requête : " . $conn->error);
-    }
+ 
+    // Requête SQL pour récupérer l'utilisateur de la base de données
+    $stmt = $conn->prepare("SELECT id, username, password, titre,  role FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-
+ 
     $loginStatus = "failure";
     $userId = null;
-
+ 
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $hashed_password = $row["password"];
-
+ 
+        // Vérifier si le mot de passe correspond
         if (password_verify($password, $hashed_password)) {
+            // Mot de passe correct, enregistrer les informations de l'utilisateur dans la session
             $_SESSION["user_id"] = $row["id"];
             $_SESSION["username"] = $row["username"];
             $_SESSION["role"] = $row["role"];
-            $_SESSION["titre"] = $row["titre"];
-
+           
+ 
+            // Enregistrer l'historique de la connexion
             $userId = $row["id"];
             $loginStatus = "success";
-
+ 
             // Enregistrer l'historique de la connexion (succès)
             $ipAddress = $_SERVER['REMOTE_ADDR'];
             $userAgent = $_SERVER['HTTP_USER_AGENT'];
             $loginTime = date('Y-m-d H:i:s');
-
+ 
             $historyStmt = $conn->prepare("INSERT INTO login_history (user_id, username, login_time, ip_address, user_agent, login_status) VALUES (?, ?, ?, ?, ?, ?)");
-            if (!$historyStmt) {
-                die("Échec de la préparation de la requête d'historique : " . $conn->error);
-            }
             $historyStmt->bind_param("isssss", $userId, $username, $loginTime, $ipAddress, $userAgent, $loginStatus);
             $historyStmt->execute();
             $historyStmt->close();
-
+ 
+            // Rediriger en fonction du rôle de l'utilisateur
             if ($row["role"] == "admin") {
                 header("Location: ../dash/index.php");
             } else if ($row["role"] == "user") {
                 if ($row["titre"] == "developpeur") {
-                    header("Location: ../eya+hadil/developpeur.html");
+                    header("Location: ../eya+hadil/devlopeur.html");
                 } else if ($row["titre"] == "joueur") {
                     header("Location: ../eya+hadil/joueur.html");
                 } else {
@@ -64,26 +65,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
             exit();
-        } else {
-            echo "Mot de passe incorrect.<br>";
         }
-    } else {
-        echo "Utilisateur non trouvé.<br>";
     }
-
+ 
     // Enregistrer l'historique de la connexion (échec)
     $ipAddress = $_SERVER['REMOTE_ADDR'];
     $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $loginTime = date('Y-m-d H:i:s');
-
+ 
     $historyStmt = $conn->prepare("INSERT INTO login_history (user_id, username, login_time, ip_address, user_agent, login_status) VALUES (?, ?, ?, ?, ?, ?)");
-    if (!$historyStmt) {
-        die("Échec de la préparation de la requête d'historique : " . $conn->error);
-    }
     $historyStmt->bind_param("isssss", $userId, $username, $loginTime, $ipAddress, $userAgent, $loginStatus);
     $historyStmt->execute();
     $historyStmt->close();
-
+ 
+    $error_message = "Nom d'utilisateur ou mot de passe incorrect";
+ 
     $stmt->close();
     $conn->close();
 }
