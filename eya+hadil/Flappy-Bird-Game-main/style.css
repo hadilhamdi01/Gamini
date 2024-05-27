@@ -34,14 +34,14 @@
 	position: absolute;
 	z-index: 10;
 	color: black;
-	top: 30%;
+	top: 50%;
 	left: 50%;
 	font-size: 4em;
 	transform: translate(-50%, -50%);
 	text-align: center;
 }
 .messageStyle{
-	background: white;
+	background: rgba(242, 241, 238, 0.827);
 	padding: 30px;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	border-radius: 5%;
@@ -80,4 +80,4 @@
 	.pipe_sprite{
 		width: 14vw;
 	}
-}
+} 

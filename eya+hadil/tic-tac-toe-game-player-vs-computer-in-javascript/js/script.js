@@ -1,8 +1,11 @@
-var cpuIcon = 'X';
-var playerIcon = 'O';
-var AIMove;
-//settings for liveBoard: 1 is cpuIcon, -1 is playerIcon, 0 is empty
-var liveBoard = [1, -1, -1, -1, 1, 1, 1, -1, -1];
+var cpuIcon = 'X'; // Définir le symbole du CPU par défaut comme 'X'
+var playerIcon = 'O'; // Définir le symbole du joueur par défaut comme 'O'
+var AIMove; // Variable pour stocker le prochain coup de l'IA
+
+// Définir l'état initial de la grille: 1 pour le CPU, -1 pour le joueur, 0 pour vide
+var liveBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // Grille vide au début
+
+// Définir les lignes gagnantes possibles
 var winningLines = [
   [0, 1, 2],
   [3, 4, 5],
@@ -14,190 +17,207 @@ var winningLines = [
   [2, 4, 6]
 ];
 
-//UI
+// Interface Utilisateur (UI)
+// Fonction pour afficher la grille
 function renderBoard(board) {
   board.forEach(function(el, i) {
-    var squareId = '#' + i.toString();
+    var squareId = '#' + i.toString(); // Obtenir l'ID de la case
     if (el === -1) {
-      $(squareId).text(playerIcon);
+      $(squareId).text(playerIcon); // Mettre le symbole du joueur dans la case
     } else if (el === 1) {
-      $(squareId).text(cpuIcon);
+      $(squareId).text(cpuIcon); // Mettre le symbole du CPU dans la case
     }
   });
   
-  $('.square:contains(X)').addClass('x-marker');
-  $('.square:contains(O)').addClass('o-marker');
+  $('.square:contains(X)').addClass('x-marker'); // Ajouter une classe pour les cases contenant 'X'
+  $('.square:contains(O)').addClass('o-marker'); // Ajouter une classe pour les cases contenant 'O'
 }
 
+// Fonction pour animer la ligne gagnante
 function animateWinLine() {
   var idxOfArray = winningLines.map(function(winLines) {
     return winLines.map(function(winLine) {
-      return liveBoard[winLine];
+      return liveBoard[winLine]; // Obtenir l'état des cases de chaque ligne gagnante
     }).reduce(function(prev, cur) {
-      return prev + cur;
+      return prev + cur; // Somme des états des cases
     });
   });
-  var squaresToAnimate = winningLines[idxOfArray.indexOf(Math.abs(3))];
+  var squaresToAnimate = winningLines[idxOfArray.indexOf(Math.abs(3))]; // Trouver la ligne gagnante
   
   squaresToAnimate.forEach(function(el) {
-      $('#' + el).fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200).fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
-    });
-}
-
-//MODALS
-function chooseMarker() {
-  $('.modal-container').css('display', 'block');
-  $('.choose-modal').addClass('animated bounceInUp');
-  
-  $('.button-area span').click(function() {
-    var marker = $(this).text();
-    playerIcon = (marker === 'X' ? 'X' : 'O');
-    cpuIcon = (marker === 'X' ? 'O' : 'X');
-
-    $('.choose-modal').addClass('animated bounceOutDown');
-    setTimeout(function() {
-      $('.modal-container').css('display', 'none');
-      $('.choose-modal').css('display','none');
-      startNewGame();
-    }, 700);
-    
-    $('.button-area span').off();
+    $('#' + el).fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200).fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200); // Animer les cases de la ligne gagnante
   });
 }
 
-function endGameMessage(){
-  var result = checkVictory(liveBoard);
-  $('.end-game-modal h3').text(result === 'win' ? 'You Lost' : "It's a draw");
+// Modals
+// Fonction pour choisir le marqueur
+function chooseMarker() {
+  $('.modal-container').css('display', 'block'); // Afficher la modal
+  $('.choose-modal').addClass('animated bounceInUp'); // Ajouter une animation à la modal
   
-  $('.modal-container').css('display', 'block');
+  $('.button-area span').click(function() {
+    var marker = $(this).text(); // Obtenir le texte du bouton cliqué
+    playerIcon = (marker === 'X' ? 'X' : 'O'); // Définir le symbole du joueur
+    cpuIcon = (marker === 'X' ? 'O' : 'X'); // Définir le symbole du CPU
+
+    $('.choose-modal').addClass('animated bounceOutDown'); // Ajouter une animation de sortie à la modal
+    setTimeout(function() {
+      $('.modal-container').css('display', 'none'); // Masquer la modal
+      $('.choose-modal').css('display','none');
+      startNewGame(); // Commencer une nouvelle partie
+    }, 700);
+    
+    $('.button-area span').off(); // Désactiver les événements de clic
+  });
+}
+
+// Fonction pour afficher le message de fin de partie
+function endGameMessage(result) {
+  $('.end-game-modal h3').text(result); // Afficher le message de fin de partie
+  
+  $('.modal-container').css('display', 'block'); // Afficher la modal de fin de partie
   $('.end-game-modal').css('display','block').removeClass('animated bounceOutDown').addClass('animated bounceInUp');
  
-  $('.button-area span').click(function() {
-    
+  // Ajouter l'événement de clic pour le bouton "Rejouer"
+  $('#replay-button').click(function() {
     $('.end-game-modal').removeClass('animated bounceInUp').addClass('animated bounceOutDown');
     
     setTimeout(function() {
       $('.modal-container').css('display', 'none');
-      startNewGame();
+      startNewGame(); // Commencer une nouvelle partie
     }, 700);
     
-    $('.button-area span').off();
+    $('#replay-button').off(); // Désactiver les événements de clic
+  });
+
+  // Ajouter l'événement de clic pour le bouton "Quitter"
+  $('#quit-button').click(function() {
+    window.location.href = 'joueur.php'; // Rediriger vers la page joueur.php
   });
 }
 
-//GAMEPLAY
+// Gameplay
+// Fonction pour commencer une nouvelle partie
 function startNewGame() {
-  liveBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  $('.square').text("").removeClass('o-marker x-marker');
-  renderBoard(liveBoard);
-  playerTakeTurn();
+  liveBoard = [0, 0, 0, 0, 0, 0, 0, 0, 0]; // Réinitialiser la grille
+  $('.square').text("").removeClass('o-marker x-marker'); // Réinitialiser l'affichage de la grille
+  renderBoard(liveBoard); // Afficher la grille réinitialisée
+  playerTakeTurn(); // Lancer le tour du joueur
 }
 
+// Fonction pour gérer le tour du joueur
 function playerTakeTurn() {
   $('.square:empty').hover(function() {
-    $(this).text(playerIcon).css('cursor', 'pointer');
+    $(this).text(playerIcon).css('cursor', 'pointer'); // Afficher le symbole du joueur au survol
   }, function() {
-    $(this).text('');
+    $(this).text(''); // Effacer le symbole au retrait du survol
   });
 
   $('.square:empty').click(function() {
     $(this).css('cursor', 'default');
-    liveBoard[parseInt($(this).attr('id'))] = -1;
-    renderBoard(liveBoard);
+    liveBoard[parseInt($(this).attr('id'))] = -1; // Mettre à jour l'état de la case cliquée
+    renderBoard(liveBoard); // Afficher la grille mise à jour
     
-    if (checkVictory(liveBoard)) {    
-      setTimeout(endGameMessage,(checkVictory(liveBoard) === 'win') ? 700 : 100);
+    var result = checkVictory(liveBoard); // Vérifier la victoire après le coup du joueur
+    if (result) {    
+      setTimeout(function() { endGameMessage(result); }, 700); // Afficher le message de fin de partie si nécessaire
     } else {
-      setTimeout(aiTakeTurn, 100);
+      setTimeout(aiTakeTurn, 100); // Lancer le tour de l'IA
     }
-    $('.square').off();
+    $('.square').off(); // Désactiver les événements de clic
   });
 }
 
+// Fonction pour gérer le tour de l'IA
 function aiTakeTurn() {
-  miniMax(liveBoard, 'aiPlayer');
-  liveBoard[AIMove] = 1;
-  renderBoard(liveBoard);
-  if (checkVictory(liveBoard)) {
-    animateWinLine();
-    setTimeout(endGameMessage, checkVictory(liveBoard) === 'win' ? 700 : 100);
+  miniMax(liveBoard, 'aiPlayer'); // Appeler l'algorithme minimax pour déterminer le coup de l'IA
+  liveBoard[AIMove] = 1; // Mettre à jour l'état de la case choisie par l'IA
+  renderBoard(liveBoard); // Afficher la grille mise à jour
+  
+  var result = checkVictory(liveBoard); // Vérifier la victoire après le coup de l'IA
+  if (result) {
+    animateWinLine(); // Animer la ligne gagnante si nécessaire
+    setTimeout(function() { endGameMessage(result); }, 700); // Afficher le message de fin de partie
   } else {
-    playerTakeTurn();
+    playerTakeTurn(); // Lancer le tour du joueur
   }
 }
 
-//UTILITIES
+// Utilitaires
+// Fonction pour vérifier la victoire
 function checkVictory(board) {
   var squaresInPlay = board.reduce(function(prev, cur) {
-    return Math.abs(prev) + Math.abs(cur);
-  });
-
+    return Math.abs(prev) + Math.abs(cur); // Compter les cases jouées
+  }, 0); // Ajouter un 0 initial pour éviter des erreurs
+  
   var outcome = winningLines.map(function(winLines) {
     return winLines.map(function(winLine) {
-      return board[winLine];
+      return board[winLine]; // Obtenir l'état des cases de chaque ligne gagnante
     }).reduce(function(prev, cur) {
-      return prev + cur;
+      return prev + cur; // Somme des états des cases
     });
   }).filter(function(winLineTotal) {
-    return Math.abs(winLineTotal) === 3;
+    return Math.abs(winLineTotal) === 3; // Filtrer les lignes gagnantes
   });
 
-  if (outcome[0] === 3) {
-    return 'win';
-  } else if (outcome[0] === -3) {
-    return 'lose';
+  if (outcome.length > 0 && outcome[0] === 3) {
+    return 'tu échoues'; // Retourner 'tu échoues' si le CPU gagne
+  } else if (outcome.length > 0 && outcome[0] === -3) {
+    return 'tu as gagné'; // Retourner 'tu as gagné' si le joueur gagne
   } else if (squaresInPlay === 9) {
-    return 'draw';
+    return 'match nul'; // Retourner 'match nul' si toutes les cases sont jouées
   } else {
-    return false;
+    return false; // Retourner false si la partie n'est pas encore terminée
   }
 }
 
+// Fonction pour obtenir les mouvements disponibles
 function availableMoves(board) {
   return board.map(function(el, i) {
-    if (!el) {
-      return i;
+    if (el === 0) {
+      return i; // Retourner les indices des cases vides
     }
   }).filter(function(e) {
     return (typeof e !== "undefined");
   });
 }
 
-//AI
-//minimax algorithm - explanation here: http://http://neverstopbuilding.com/minimax
+// IA
+// Algorithme minimax
 function miniMax(state, player) {
-  //base cases: check for an end state and if met - return the score from the perspective of the AI player.  
+  // Cas de base: vérifier un état final et retourner le score du point de vue de l'IA
   var rv = checkVictory(state);
-  if (rv === 'win') {
-    return 10;
+  if (rv === 'tu échoues') {
+    return 10; // Retourner 10 si l'IA gagne
   }
-  if (rv === 'lose') {
-    return -10;
+  if (rv === 'tu as gagné') {
+    return -10; // Retourner -10 si l'IA perd
   }
-  if (rv === 'draw') {
-    return 0;
+  if (rv === 'match nul') {
+    return 0; // Retourner 0 en cas d'égalité
   }
 
   var moves = [];
   var scores = [];
-  //for each of the available squares: recursively make moves and push the score + accompanying move to the moves + scores array
+  // Pour chaque case disponible: faire des mouvements récursifs et ajouter le score + mouvement associé aux tableaux moves et scores
   availableMoves(state).forEach(function(square) {
-    state[square] = (player === 'aiPlayer') ? 1 : -1;
-    scores.push(miniMax(state, (player === 'aiPlayer') ? 'opponent' : 'aiPlayer'));
-    moves.push(square);
-    state[square] = 0;
+    state[square] = (player === 'aiPlayer') ? 1 : -1; // Simuler le coup
+    scores.push(miniMax(state, (player === 'aiPlayer') ? 'opponent' : 'aiPlayer')); // Calculer le score du coup
+    moves.push(square); // Ajouter le mouvement
+    state[square] = 0; // Réinitialiser la case
   });
 
-  //calculate and return the best score gathered from each of the available moves. track the best movein the AIMove variable
-
+  // Calculer et retourner le meilleur score parmi les mouvements disponibles. Suivre le meilleur mouvement dans la variable AIMove
   if (player === 'aiPlayer') {
-    AIMove = moves[scores.indexOf(Math.max.apply(Math, scores))];
-    return Math.max.apply(Math, scores);
+    AIMove = moves[scores.indexOf(Math.max.apply(Math, scores))]; // Obtenir le meilleur mouvement pour l'IA
+    return Math.max.apply(Math, scores); // Retourner le meilleur score pour l'IA
   } else {
-    AIMove = moves[scores.indexOf(Math.min.apply(Math, scores))];
-    return Math.min.apply(Math, scores);
+    return Math.min.apply(Math, scores); // Retourner le meilleur score pour l'adversaire
   }
 }
 
+// Afficher la grille initiale
 renderBoard(liveBoard);
+
+// Afficher la modal pour choisir le marqueur
 chooseMarker();

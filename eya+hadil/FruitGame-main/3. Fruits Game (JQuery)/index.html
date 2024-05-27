@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Fruits Game</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=yes">
-        <link rel="stylesheet" href="styling.css">
-    </head>
-    <body>
-        <div id="container">
-            <div id="score">
-                Score: <span id="score-value">0</span>
-            </div>
-            <div id="lifesLeft"></div>
-            <div id="fruitsContainer">
-                <img id="fruit1" class="fruit">
-                <img id="bomb" class="fruit" src="images/bomb.png">
-            </div>
-            
-           
-            
-            <div id="startreset">
-                Jouer
-            </div>
-            
-            <div id="gameover">
-                
-            </div>
+<head>
+    <title>Fruits Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=yes">
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <div id="container">
+        <div id="score">
+            Score: <span id="score-value">0</span>
         </div>
-        <audio id="slicesound">
-            <source src="audio/slicefruit.mp3">
-            <source src="audio/slicefruit.ogg">
-        </audio>
-        <audio id="bombsound">
-            <source src="audio/bomb-sound.mp3">
-            <source src="audio/bomb-sound.ogg">
-        </audio>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="code.js"></script>
-    </body>
+        <div id="lifesLeft"></div>
+        <div id="fruitsContainer">
+            <img id="fruit1" class="fruit">
+            <img id="bomb" class="fruit" src="images/bomb.png">
+        </div>
+        <div id="startreset">
+            Jouer
+        </div>
+        <div id="gameover">
+            <p>Fin du jeu !</p>
+            <p id="final-score">Votre score est <span id="final-score-value">0</span></p>
+            <button id="replay">Rejouer</button>
+            <button id="quit">Quitter</button>
+        </div>
+    </div>
+    <audio id="slicesound">
+        <source src="audio/slicefruit.mp3">
+        <source src="audio/slicefruit.ogg">
+    </audio>
+    <audio id="bombsound">
+        <source src="audio/bomb-sound.mp3">
+        <source src="audio/bomb-sound.ogg">
+    </audio>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="code.js"></script>
+</body>
 </html>

@@ -132,36 +132,7 @@ $(window).load(function () {
 
     };
 
-    var cherry = {
-        size: 10,
-        color: "red",
-        state: 0,
-        x: 0,
-        y: 0,
-        cherries: 0,
-
-        drawCherry: function () {
-
-
-        	var img = new Image();
-        	img.src = 'img/cherry.png';
-
-            if (cherry.state) {
-                // ctx.beginPath();
-                 //ctx.arc(cherry.x, cherry.y, cherry.size, 0, 2 * Math.PI);
-                 //ctx.stroke();
-
-                ctx.drawImage(img, cherry.x - cherry.size, cherry.y - cherry.size, cherry.size*2, cherry.size*2);
-
-                if (cherry.x > player.x && cherry.x < player.x + player.width && player.pos === 'down') {
-                    cherry.state = 0;
-                    cherry.cherries++;
-                }
-
-
-            }
-        }
-    }
+    
 
     function start() {
 
@@ -179,18 +150,18 @@ $(window).load(function () {
     function setDefault() {
         // set default values
         score = 0;
-        cherry.cherries = 0;
+        
         walls = [];
         wall.currentIndex = 0;
         player.state = 'rest';
         stick.state = 'rest';
         wall.state = 'rest';
-        cherry.state = 0;
+       
         player.pos = 'up';
         wall.maxDistance = height/2;
         wall.leftMargin = width/2 - wall.maxWidth;
         wall.y = height / 1.5;
-        cherry.y = wall.y + 2 * cherry.size;
+        
 
         generateWall();
 
@@ -238,7 +209,7 @@ $(window).load(function () {
         ctx.clearRect(0, 0, width, height);
 
         drawWalls();
-        cherry.drawCherry();
+        
         player.drawPlayer();
         drawScore();
 
@@ -315,10 +286,7 @@ $(window).load(function () {
                     wall.state = 'moving'; // move the walls leftwards
                     wall.currentIndex++;
 
-                    if (random(1, 100) % 2 === 0) {
-                        cherry.state = 1;
-                        cherry.x = random(walls[wall.currentIndex].x + walls[wall.currentIndex].width + 2 * cherry.size, walls[wall.currentIndex + 1].x - 2 * cherry.size);
-                    }
+                   
 
                     stick.state = 'rest';
                     console.log('alive');
@@ -344,7 +312,7 @@ $(window).load(function () {
                 }
 
                 player.x -= wall.speed;
-                cherry.x -= wall.speed;
+                
 
                 wall.speed += wall.acceleration;
 
@@ -391,7 +359,7 @@ $(window).load(function () {
         ctx.font = "20px cursive";
         ctx.fillText("Score  : " + score, 50, 50);
         ctx.fillStyle = 'dodgerblue';
-        ctx.fillText("Cherry : " + cherry.cherries, 50, 80);
+       
     }
 
 
@@ -531,5 +499,6 @@ $(window).load(function () {
             y: y2
         };
     }
-
-});
+   
+    
+}); 

@@ -1,73 +1,53 @@
 <html>
 <head>
-	<title>3D SNAKE GAME -Divine203</title>
-</head>
-<body>
-	<div class="score-cont">
-			<p class="score">0</p>
-	</div>
+    <title>3D SNAKE GAME - Divine203</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(snake.png);
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        /* Other styles remain unchanged */
 
-	<div class="canvas-cont">
-		<div class="canvas">
-			<!-- <div class="snake"></div> -->
-			<!-- <div class="fruit"></div> -->
-		</div>
-	</div>
-
-	<div class="menu">
-		<div class="intro-cont">
-			<p>
-				<span>3</span>
-				<span>D</span> 
-				<span>Snake</span>
-			</p>	
-		</div>
-		<div class="btn-cont">
-			<button class="start-btn" onclick="startGame()"><b>START</b></button>
-		</div>
-	</div>
-
-
-
-	<!----------------SELECT LEVEL--------------------->
-
-	<div class="menu-select-cont">
-		<div class="menu-select">
-			<p>Select level</p>
-
-			<div>
-				<button class="easy" onclick="easy()">Easy</button>
-			</div>
-			<div>
-					<button class="medium" onclick="medium()">Medium</buttpn>
-			</div>
-			<div>
-				<button class="hard" onclick="hard()">Hard</button>
-			</div>
-		</div>
-	</div>
-
-
-
-</body>
-<style>
-	body{
-		margin: 0;
-		padding: 0;
-		background:url(snake.png);
-		overflow: hidden;
-		background-repeat: no-repeat;
-		background-size: cover;
-	}	
-
-	/************** score style *************/
+        /* Styles for the game-over dialog */
+        .game-over-dialog {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            z-index: 1000;
+        }
+        .game-over-dialog button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .game-over-dialog .replay-btn {
+            background-color: green;
+            color: white;
+        }
+        .game-over-dialog .quit-btn {
+            background-color: red;
+            color: white;
+        }
+		/************** score style *************/
 	.score-cont{
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		font-family: comic sans ms;
 		font-size: 2em;
-		color: #111;
+		color: #fffbfb;
 	}
 	.score{
 		opacity: 0;
@@ -415,6 +395,63 @@
 			margin-top: 0px;
 		}
 
-</style>
+    </style>
+</head>
+<body>
+    <!-- Existing HTML content -->
+    <!-- Add the game over dialog here -->
+    <div class="game-over-dialog" id="gameOverDialog">
+        <p id="gameOverMessage"></p>
+        <button class="replay-btn" onclick="replayGame()">Rejouer</button>
+        <button class="quit-btn" onclick="quitGame()">Quitter</button>
+    </div>
+
+    <div class="score-cont">
+        <p class="score">0</p>
+    </div>
+
+    <div class="canvas-cont">
+        <div class="canvas">
+            <!-- <div class="snake"></div> -->
+            <!-- <div class="fruit"></div> -->
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="intro-cont">
+            <p>
+                <span>3</span>
+                <span>D</span>
+                <span>Serpent</span>
+            </p>
+        </div>
+        <div class="btn-cont">
+            <button class="start-btn" onclick="startGame()"><b>Jouer</b></button>
+        </div>
+    </div>
+
+    <!----------------SELECT LEVEL--------------------->
+    <div class="menu-select-cont">
+        <div class="menu-select">
+            <p>Sélectionner le niveau</p>
+            <div>
+                <button class="easy" onclick="easy()">Facile</button>
+            </div>
+            <div>
+                <button class="medium" onclick="medium()">Moyen</button>
+            </div>
+            <div>
+                <button class="hard" onclick="hard()">Déficile</button>
+            </div>
+        </div>
+    </div>
+</body>
 <script src="scriptSnake.js"></script>
 </html>
+
+
+	
+
+
+
+	

@@ -1,6 +1,7 @@
 const canvas = document.querySelector('.canvas');
 const scoreElement = document.querySelector('.score');
-
+const gameOverDialog = document.getElementById('gameOverDialog');
+const gameOverMessage = document.getElementById('gameOverMessage');
 
 //sounds
 const btnClick = new Audio('click.mp3');
@@ -10,6 +11,7 @@ const snakeDie = new Audio('die.mp3');
 
 
 let score = Number(scoreElement.textContent);
+let isGameOver = false; // Variable pour suivre l'état du jeu
 
 
 
@@ -123,7 +125,7 @@ function startGame(){
 
 
 	const update = () => {
-
+		if (isGameOver) return; // Arrêter la mise à jour si le jeu est terminé
 		let newRandomNumX = Math.floor(Math.random()*21) + 1;
 		let newRandomNumY = Math.floor(Math.random()*21) + 1;
 
@@ -155,8 +157,9 @@ function startGame(){
 		//Game over logic
 		const gameOver = (message) => {
 			snakeDie.play();
-			window.location.reload();
-			return alert(message + scoreElement.textContent);
+			gameOverMessage.textContent = message + scoreElement.textContent;
+        gameOverDialog.style.display = 'block';
+		isGameOver = true; // Mettre à jour l'état du jeu pour signaler que le jeu est terminé
 		}
 		///////////////////
 
@@ -267,9 +270,34 @@ function startGame(){
 
 	
 	}
+	let lastRenderTime = 0;
+const main = (currentTime) => {
+    if (isGameOver) return; // Arrêter la boucle principale si le jeu est terminé
+
+    const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
+    window.requestAnimationFrame(main);
+    if (secondsSinceLastRender < 0.2) return; // Changé de 0.05 à 0.2
+
+    lastRenderTime = currentTime;
+    update();
+    canvas.innerHTML = '';
+    draw(canvas);
+};
+
+window.requestAnimationFrame(main);
+
+const replayGame = () => {
+    gameOverDialog.style.display = 'none';
+    window.location.reload(); // Reload the page to restart the game
+};
+
+const quitGame = () => {
+    window.location.href = 'joueur.php'; // Redirect to joueur.php
+};
 
 ///////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////
 
 
 
@@ -282,7 +310,7 @@ const menuSelectCont = document.querySelector('.menu-select-cont');
 
 function easy(){
 	btnClick.play();
-	let snake_speed = .15;
+	let snake_speed = 0.5;
 	const frameTime = snake_speed * 1000;
 
 	intro.style.opacity = 0;
@@ -290,7 +318,7 @@ function easy(){
 	scoreElement.style.opacity = 1;
 	body.style.background = '#fff';
 	canvasContainer.classList.add('show-canvas');
-
+	isGameOver = false; // Réinitialiser l'état du jeu
 	window.setInterval(function(){
 		update();
 
@@ -301,7 +329,7 @@ function easy(){
 
 function medium(){
 	btnClick.play();
-	let snake_speed = .1;
+	let snake_speed = 0.3;
 	const frameTime = snake_speed * 1000;
 
 	intro.style.opacity = 0;
@@ -309,7 +337,7 @@ function medium(){
 	scoreElement.style.opacity = 1;
 	body.style.background = '#fff';
 	canvasContainer.classList.add('show-canvas');
-
+	isGameOver = false; // Réinitialiser l'état du jeu
 	window.setInterval(function(){
 		
 		update();
@@ -322,7 +350,7 @@ function medium(){
 
 function hard(){
 	btnClick.play();
-	let snake_speed = .05;
+	let snake_speed = 0.2;
 	const frameTime = snake_speed * 1000;
 
 	intro.style.opacity = 0;
@@ -330,7 +358,7 @@ function hard(){
 	scoreElement.style.opacity = 1;
 	body.style.background = '#fff';
 	canvasContainer.classList.add('show-canvas');
-
+	isGameOver = false; // Réinitialiser l'état du jeu
 	window.setInterval(function(){		
 		update();
 
