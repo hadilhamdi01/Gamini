@@ -1,6 +1,6 @@
 <?php
 include_once 'db_connection.php';
-require '../vendor/autoload.php';
+require '../vendor/autoload.php'; // Assurez-vous que le chemin est correct pour autoload.php de Composer
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = intval($_POST['id']);
     $status = $_POST['status'];
 
+    // Mettre à jour le statut dans la table request
     $stmt_update_request = $conn->prepare("UPDATE registration_requests SET status = ? WHERE id = ?");
     if ($stmt_update_request === false) {
         die('Erreur de préparation de la requête de mise à jour : ' . $conn->error);
@@ -26,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt_update_request->close();
 
+    // Récupérer les informations de la demande
     $stmt_select_request = $conn->prepare("SELECT username, email, ville, titre FROM registration_requests WHERE id = ?");
     if ($stmt_select_request === false) {
         die('Erreur de préparation de la requête de sélection : ' . $conn->error);
@@ -45,18 +47,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $row_request = $result_request->fetch_assoc();
     $stmt_select_request->close();
 
+    // Insérer les données dans la table users
     $stmt_insert_user = $conn->prepare("INSERT INTO users (username, password, role, email, ville, titre, image) VALUES (?, ?, ?, ?, ?, ?, DEFAULT)");
     if ($stmt_insert_user === false) {
         die('Erreur de préparation de la requête d\'insertion : ' . $conn->error);
     }
     
-    $password = password_hash("default_password", PASSWORD_DEFAULT);
-    $role = "user";
+    // Vous devrez générer un mot de passe sécurisé pour chaque utilisateur. C'est un exemple basique, vous devez utiliser des méthodes de hachage sécurisé.
+    $password = password_hash("default_password", PASSWORD_DEFAULT); 
+    $role = "user"; 
 
     $bind_insert_user = $stmt_insert_user->bind_param("ssssss", $row_request['username'], $password, $role, $row_request['email'], $row_request['ville'], $row_request['titre']);
     if ($bind_insert_user === false) {
         die('Erreur de liaison des paramètres : ' . $stmt_insert_user->error);
     }
+
 
     $exec_insert_user = $stmt_insert_user->execute();
     if ($exec_insert_user === false) {
@@ -64,24 +69,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt_insert_user->close();
+    
 
+    // Envoi de l'email à l'utilisateur avec PHPMailer
     $mail = new PHPMailer(true);
 
     try {
+        // Configuration du serveur SMTP
         $mail->isSMTP();
-        $mail->Host = "smtp.gmail.com";
+        $mail->Host = "smtp.gmail.com"; // Remplacez par votre hôte SMTP
         $mail->SMTPAuth = true;
-        $mail->Username = "hamdihadil51@gmail.com";
-        $mail->Password = "pxbo ahio ipde tkuc";
+        $mail->Username = "hamdihadil51@gmail.com"; // Remplacez par votre adresse email SMTP
+        $mail->Password = "pxbo ahio ipde tkuc"; // Remplacez par votre mot de passe SMTP
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
+        // Destinataires
         $mail->setFrom('hamdihadil51@gmail.com', 'Admin');
         $mail->addAddress($row_request['email']);
 
+        // Contenu de l'email
         $mail->isHTML(true);
         $mail->Subject = 'Demande d\'inscription';
-        $mail->Body    = "Bonjour " . $row_request['username'] . ",<br><br>Votre demande a été acceptée. Vous devez changer votre mot de passe pour accéder à notre plateforme.<br><br>Cordialement,<br>L'équipe.";
+        $mail->Body    = "Bonjour " . $row_request['username'] . ",<br><br>Votre demande a été acceptée. Vous pouvez accéder à notre plateforme.<br><br>Cordialement,<br>L'équipe.";
 
         $mail->send();
         header('Location: index.php');
