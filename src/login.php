@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Requête SQL pour récupérer l'utilisateur de la base de données
-    $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, username, password, titre, role FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -55,7 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($row["role"] == "admin") {
                 header("Location: ../dash/index.php");
             } else if ($row["role"] == "user") {
-                header("Location: ../eya+hadil/portfolio.html");
+                if ($row["titre"] == "developpeur") {
+                    header("Location: ../eya+hadil/devlopeur.html");
+                } else if ($row["titre"] == "joueur") {
+                    header("Location: ../eya+hadil/joueur.html");
+                } else {
+                    header("Location: ../eya+hadil/portfolio.html");
+                }
             }
             exit();
         }
@@ -77,18 +83,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
     <title>My HTML Page</title>
 </head>
-
-
 <body>
     <section class="container">
         <div class="login-container">
@@ -97,13 +99,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
                 <h1 class="opacity">Connexion</h1>
                 <form action="login.php" method="POST">
-                    <input type="text"  name="username" placeholder="nom" />
-                    <input type="password" name="password" placeholder="mot de passe" />
+                    <input type="text"  name="username" placeholder="nom" required />
+                    <input type="password" name="password" placeholder="mot de passe" required />
                     <button class="opacity" type="submit">Se connecter</button>
                 </form>
                 <div class="register-forget opacity">
                     <a href="register.php">S'inscrire</a>
-                    <a href="reset_password_form.php">Mot de passe oblier</a>
+                    <a href="reset_password_form.php">Mot de passe oublié</a>
                 </div>
             </div>
             <div class="circle circle-two"></div>

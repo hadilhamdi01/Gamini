@@ -8,6 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = $_POST['date'];
     $formatted_date = date('Y-m-d', strtotime($date));
     $titre = $_POST['titre'];
+
+
+
     // Établir une connexion à la base de données
     $servername = "localhost";
     $username = "root";
