@@ -1,6 +1,6 @@
 :root {
     --background: #1a1a2e;
-    --color: #ffffff;
+    --color: #fff;
     --primary-color: #0f3460;
 }
 
@@ -33,6 +33,7 @@ a {
 
 h1 {
     font-size: 2.5rem;
+    color: black;
 }
 
 .container {

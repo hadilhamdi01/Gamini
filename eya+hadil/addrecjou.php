@@ -236,6 +236,54 @@
         .popup a.close:hover {
             color: #000;
         }
+        .gold-members form label {
+        display: block;
+        /* Afficher chaque label sur une nouvelle ligne */
+        margin-bottom: 10px;
+        /* Ajouter une marge en bas de chaque label */
+        color: white;
+        /* Couleur du texte */
+    }
+
+    .gold-members form input[type="text"],
+    .gold-members form textarea {
+        width: 100%;
+        /* Largeur à 100% pour remplir le conteneur parent */
+        padding: 10px;
+        /* Espace intérieur */
+        margin-bottom: 20px;
+        /* Ajouter une marge en bas de chaque champ de saisie */
+        box-sizing: border-box;
+        /* Inclure les bordures et les rembourrages dans la largeur */
+        border-radius: 5px;
+        /* Bordure arrondie */
+        border: 1px solid #ccc;
+        /* Bordure */
+        background-color: transparent;
+        /* Fond transparent */
+        color: white;
+        /* Couleur du texte */
+    }
+
+    .gold-members form input[type="submit"] {
+        background-color: #ffc107;
+        /* Couleur de fond */
+        color: white;
+        /* Couleur du texte */
+        border: none;
+        /* Supprimer la bordure */
+        padding: 10px 20px;
+        /* Espace intérieur */
+        border-radius: 5px;
+        /* Bordure arrondie */
+        cursor: pointer;
+        /* Curseur pointer */
+    }
+
+    .gold-members form input[type="submit"]:hover {
+        background-color: #ffca28;
+        /* Couleur de fond au survol */
+    }
     </style>
 </head>
 

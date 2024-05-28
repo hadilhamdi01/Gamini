@@ -70,8 +70,7 @@ h3,
 .h3,
 h4,
 .h4,
-h5,
-.h5,
+
 h6,
 .h6 {
     margin-top: 0;
@@ -80,6 +79,15 @@ h6,
     font-weight: 700;
     line-height: 1.2;
     color: #fff
+}
+h5,
+.h5{
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: black
 }
 
 h1,
@@ -136,7 +144,8 @@ h4,
 
 h5,
 .h5 {
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    
 }
 
 h6,
